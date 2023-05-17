@@ -1,8 +1,12 @@
 import './App.css';
+import Example from './components/header/header.jsx'
 
 function App() {
   return (
-    <div>MP3go</div>
+    <>
+    <Example/>
+    
+    </>
   );
 }
 
