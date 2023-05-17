@@ -2,6 +2,7 @@ import './App.css';
 import { v4 as uuidv4 } from "uuid";
 import Card from "./components/Carousel/card";
 import Carousel from "./components/Carousel/Carousel"
+import Navbar from './components/header/header.jsx'
 
 function App() {
   let cards = [
@@ -37,6 +38,7 @@ function App() {
     }
   ];
   return (
+    <>
     <div className="mt-5">
       <Carousel
         cards={cards}
@@ -47,6 +49,8 @@ function App() {
         showArrows={false}
       />
     </div>
+    <Navbar/>
+    </>
   );
 }
 
