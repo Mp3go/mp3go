@@ -4,10 +4,10 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import SearchInput from '../search/SearchInput';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Home', href: '#', current: true },
+  { name: 'Album', href: '#', current: true },
+  { name: 'Generic', href: '#', current: true },
+  { name: 'Calendar', href: '#', current: true },
 ]
 
 function classNames(...classes) {
@@ -16,7 +16,7 @@ function classNames(...classes) {
 
 export default function Example() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="white-gray-800">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -36,12 +36,12 @@ export default function Example() {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src="https://th.bing.com/th/id/R.6c2974aba7b242c0198b119dd9b5858e?rik=F0rbRWgKJ1OvPQ&riu=http%3a%2f%2flevelupcollege.com%2fwp-content%2fuploads%2f2022%2f08%2falmabetter-logo.png&ehk=5E0JqCyCqefWuWbMhsq%2foc2KLssxQOMYE7Yzn%2btbNTo%3d&risl=&pid=ImgRaw&r=0"
                     alt="Your Company"
                   />
                   <img
                     className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src="https://th.bing.com/th/id/R.6c2974aba7b242c0198b119dd9b5858e?rik=F0rbRWgKJ1OvPQ&riu=http%3a%2f%2flevelupcollege.com%2fwp-content%2fuploads%2f2022%2f08%2falmabetter-logo.png&ehk=5E0JqCyCqefWuWbMhsq%2foc2KLssxQOMYE7Yzn%2btbNTo%3d&risl=&pid=ImgRaw&r=0"
                     alt="Your Company"
                   />
                 </div>
@@ -57,7 +57,9 @@ export default function Example() {
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
+                        
                         {item.name}
+                        
                       </a>
                     ))}
                   </div>
