@@ -18,7 +18,7 @@ function Card({ imagen,music }) {
       onMouseEnter={() => setShown(true)}
       onMouseLeave={() => setShown(false)}
     >
-     <div className="w-full h-full flex flex-col justify-end" style={{ 
+     <div className="md:w-full sm:w-75% w-25% h-full flex flex-col justify-end" style={{ 
       backgroundImage: `url(${imagen})`,
       backgroundSize: "100% 100%", 
     }}>
