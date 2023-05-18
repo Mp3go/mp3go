@@ -25,7 +25,7 @@ function Card({ imagen,music }) {
      {/* <img src={imagen} className="w-full h-[100px] rounded-[20px]" alt="" /> */}
       <div className="p-2 font-bold">{music}</div>
       <div className="flex justify-center align-center">
-        <button className="bg-none text-white text-[1.2rem] border-0 outline-0 rounded-[10px] w-full py-[1rem] transition ease-in-out delay-150 hover:-translate-y-1 duration-300 hover:bg-black">Listen More</button>
+        <button className="bg-none text-white text-[1.2rem] border-0 outline-0 w-full py-[1rem] m-0 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">Listen More</button>
       </div>
      </div>
     </animated.div>
