@@ -1,13 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import SearchInput from '../search/SearchInput';
+import Example1 from './dropit';
+import ToggleButton from '../toggle-button/togglebuttoncomponent';
 
 const navigation = [
   { name: 'Home', href: '#', current: true },
-  { name: 'Album', href: '#', current: true },
-  { name: 'Generic', href: '#', current: true },
-  { name: 'Calendar', href: '#', current: true },
+  { name: 'Album', href: '#', current: false },
+  
 ]
 
 function classNames(...classes) {
@@ -16,9 +18,10 @@ function classNames(...classes) {
 
 export default function Example() {
   return (
-    <Disclosure as="nav" className="white-gray-800">
+    <Disclosure as="nav" className="black-800">
       {({ open }) => (
         <>
+        
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -44,6 +47,7 @@ export default function Example() {
                     src="https://th.bing.com/th/id/R.6c2974aba7b242c0198b119dd9b5858e?rik=F0rbRWgKJ1OvPQ&riu=http%3a%2f%2flevelupcollege.com%2fwp-content%2fuploads%2f2022%2f08%2falmabetter-logo.png&ehk=5E0JqCyCqefWuWbMhsq%2foc2KLssxQOMYE7Yzn%2btbNTo%3d&risl=&pid=ImgRaw&r=0"
                     alt="Your Company"
                   />
+                  <SearchInput />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -57,16 +61,19 @@ export default function Example() {
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
-                        
                         {item.name}
                         
                       </a>
+                      
                     ))}
+                   <Example1/>
                   </div>
                 </div>
               </div>
+             
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <SearchInput />
+              
+              <ToggleButton/>
                 <button
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -74,7 +81,6 @@ export default function Example() {
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
-
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
@@ -85,8 +91,10 @@ export default function Example() {
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
+                      
                     </Menu.Button>
                   </div>
+                 
                   <Transition
                     as={Fragment}
                     enter="transition ease-out duration-100"
@@ -96,6 +104,7 @@ export default function Example() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
+                 
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
@@ -113,7 +122,7 @@ export default function Example() {
                           // eslint-disable-next-line jsx-a11y/anchor-is-valid
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(active ? 'bg-black-100' : '', 'block px-4 py-2 text-sm text-green-700')}
                           >
                             Settings
                           </a>
@@ -136,7 +145,7 @@ export default function Example() {
               </div>
             </div>
           </div>
-
+          
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
@@ -155,8 +164,10 @@ export default function Example() {
               ))}
             </div>
           </Disclosure.Panel>
+          
         </>
       )}
     </Disclosure>
+    
   )
 }
