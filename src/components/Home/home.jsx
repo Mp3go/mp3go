@@ -7,8 +7,8 @@ export default function home(){
     return(
         <>
         <Carousel/>
-        <FeaturedAlbums/>
         <NewReleases/>
+        <FeaturedAlbums/>
         </>
     )
 }
