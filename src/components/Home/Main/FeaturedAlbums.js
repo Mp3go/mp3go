@@ -48,7 +48,7 @@ export default function FeaturedAlbums (){
         ))}
       </div>
       <div className="mt-0 flex justify-center ">
-        <a href="#" className="text-center text-base hover:text-xl">see more</a>
+        <a href="/albums" className="text-center text-base hover:text-xl">see more</a>
       </div>
     
     </div>

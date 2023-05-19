@@ -1,5 +1,5 @@
 import './App.css';
-// import Navbar from './components/header/header.jsx'
+import Navbar from './components/header/header.jsx'
 import Allalbums from './components/AlbumsPage/albums';
 import Home from "./components/Home/home"
 import Genre from './components/Genre/Genre';
@@ -12,7 +12,7 @@ import {
 function App() {
   return (
     <>
-    {/* <Navbar /> */}
+    <Navbar />
     <Router>
       <Routes>
           <Route exact path="/" element={<Home />}></Route>
