@@ -16,8 +16,8 @@ function App() {
     <Router>
       <Routes>
           <Route exact path="/" element={<Home />}></Route>
-          <Route path="/genre" element={<Genre />}></Route>
           <Route path="/albums" element={<Allalbums/>}></Route>
+          <Route path="/genre/:genreType" element={<Genre />}></Route>
         </Routes>
     </Router>
     </>
