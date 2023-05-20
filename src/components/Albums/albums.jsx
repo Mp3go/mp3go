@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import data from "../Home/Carousel/data";
+import data from "../data";
 import Card from "./card";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -64,7 +64,13 @@ export default function Allalbums() {
       });
       setData(result);
     } else {
-      setData(data);
+      let result = data.filter((ele) => {
+        if (range.min <= ele.price && ele.price <= range.max) {
+          return true;
+        }
+        return false;
+      });
+      setData(result);
     }
   }, [category, artist, range]);
 
@@ -117,7 +123,8 @@ export default function Allalbums() {
           <div>
             <h4 className="font-bold my-3">Select Price Range</h4>
             <div>
-              Rs<span></span>-Rs<span></span>
+              Rs<span>{range.min}</span>&nbsp;-&nbsp;Rs
+              <span>{range.max}</span>
             </div>
             <ReactSlider
               className="bg-black mt-3 w-5/6 z-30"
