@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import data from "../data";
-import Card from "./card";
+import Card from "../Card";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import ReactSlider from "react-slider";
@@ -147,12 +147,13 @@ export default function Allalbums() {
         <h1 className="text-center font-bold text-3xl p-2">
           Complete Album Collection
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 p-2 pt-0 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 p-2 pt-5 ">
           {dataa.map((card) => (
             <Card
               image={card.imagepath}
               title={card.albumName}
               price={card.price}
+              id={card.id}
             />
           ))}
         </div>
