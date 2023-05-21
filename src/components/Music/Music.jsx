@@ -44,8 +44,8 @@ export default function Music() {
           <h1 className="mt-10 mb-3 text-center font-sans capitalize text-5xl font-medium">
             Suggestions
           </h1>
-          <hr className="w-[90%] h-[1.5px] bg-gray text-gray flex justify-center m-auto" />
-          <div className="m-5">
+          <hr className="w-[95%] h-[1.5px] bg-gray text-gray flex justify-center m-auto" />
+          <div className="m-5 w-[95%] ">
             {suggestions.map((data) => {
               return (
                 <Card
