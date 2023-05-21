@@ -1,5 +1,5 @@
 import AlbumList from "../AlbumList";
-import data from "../Home/Carousel/data";
+import data from "../data";
 import { useParams } from "react-router";
 // error page for any random string for genretype
 
