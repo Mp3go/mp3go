@@ -34,6 +34,8 @@ export default function Cart() {
       <h2 className='text-5xl font-black leading-10 pt-3 sm:ml-2 lg:ml-28'>
         Mp3go Cart
       </h2>
+      
+{/* Todo: Show div "Cart Empty" when cartItems is empty */}
 
       <div className='flex md:flex-row flex-col justify-around items-start mt-10'>
         {/* Cards */}
