@@ -1,11 +1,11 @@
-import './App.css';
-import Navbar from './components/header/header.jsx';
-import Allalbums from './components/AlbumsPage/albums';
-import Home from './components/Home/home';
-import Genre from './components/Genre/Genre';
-import Cart from './components/Cart/Cart';
-
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import "./App.css";
+import Navbar from "./components/header/header.jsx";
+import Allalbums from "./components/Albums/albums";
+import Home from "./components/Home/home";
+import Genre from "./components/Genre/Genre";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Music from "./components/Music/Music";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <Route path='/albums' element={<Allalbums />}></Route>
           <Route path='/genre/:genreType' element={<Genre />}></Route>
           <Route path='/cart' element={<Cart />}></Route>
+          <Route path="/music/:id" element={<Music />}></Route>
         </Routes>
       </Router>
     </>

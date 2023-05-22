@@ -8,7 +8,7 @@ initTE({ Ripple });
 
 export default function Card({image, title, description,price}) {
   return (
-    <div className='py-3'>
+    <div className='pb-3'>
 
     <div className="rounded shadow-lg h-80 md:h-96 max-w-sm hover:scale-105">
       <img className="w-full h-44 sm:h-48" src={image} alt="card" />
