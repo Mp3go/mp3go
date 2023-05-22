@@ -1,11 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import data from "../data";
+import { Navigate } from "react-router-dom";
 import Card from "../Card";
 
 export default function Music() {
   const params = useParams();
   const result = data.filter((a) => a.id === parseInt(params.id));
+  if (result.length === 0) {
+    return <Navigate to="/searchError" />;
+  }
   const suggestions = data.filter((a) => a.genre === result[0].genre);
   const final = result[0];
   return (
