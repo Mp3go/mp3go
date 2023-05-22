@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { Ripple, initTE } from 'tw-elements';
 
 initTE({ Ripple });
 
-export default function Card({ image, title, description, price }) {
+export default function Card({album}) {
+  
   return (
     <div className='py-3'>
       <div className='rounded shadow-lg h-80 md:h-96 max-w-sm hover:scale-105'>
-        <img className='w-full h-44 sm:h-48' src={image} alt='card' />
+        <img className='w-full h-44 sm:h-48' src={album.imagepath} alt='card' />
         <div className='px-6 lg:py-4 h-32 mt-2'>
-          <div className='font-bold text-xl mb-2'>{title}</div>
-          <div className='font-bold mb-2'>Rs{price}</div>
+          <div className='font-bold text-xl mb-2'>{album.albumName}</div>
+          <div className='font-bold mb-2'>Rs {album.price}</div>
           <div className='flex justify-between'>
             <button className='bg-none text-white md:text-[1rem] lg:text-[1.2rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black'>
               Wishlist
