@@ -1,12 +1,13 @@
 import React from "react";
 import { Ripple, initTE } from "tw-elements";
+import { Link } from "react-router-dom";
 
 initTE({ Ripple });
 
 export default function Card({ image, title, description, price, id }) {
   return (
     <div className="rounded shadow-lg h-80 md:h-96 max-w-sm transition ease-in-out delay-150 hover:scale-105 duration-300">
-      <a href={`/music/${id}`}>
+      <Link to={`/music/${id}`}>
         <img className="w-full h-44 sm:h-48" src={image} alt="card" />
         <div className="px-6 lg:py-4 h-32 mt-2">
           <div className="font-bold text-xl mb-2">{title}</div>
@@ -20,7 +21,7 @@ export default function Card({ image, title, description, price, id }) {
             </button>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 }

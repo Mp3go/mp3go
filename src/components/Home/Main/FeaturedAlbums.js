@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "./card";
 import { Ripple, initTE } from "tw-elements";
 
@@ -54,9 +55,9 @@ export default function FeaturedAlbums() {
         ))}
       </div>
       <div className="mt-0 flex justify-center ">
-        <a href="/albums" className="text-center text-base hover:text-xl">
-          see more
-        </a>
+        <Link to="/albums">
+          <div className="text-center text-base hover:text-xl">See More</div>
+        </Link>
       </div>
     </div>
   );
