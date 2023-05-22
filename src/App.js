@@ -8,6 +8,8 @@ import Music from "./components/Music/Music";
 import ScrollToTop from "./components/ErrorPage/scroll";
 import Error404 from "./components/ErrorPage/404";
 import Invalidsearch from "./components/ErrorPage/invalid";
+import Cart from "./components/Cart/Cart";
+import Wishlist from "./components/Wishlist/Wishlist";
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
           <Route exact path="/" element={<Home />}></Route>
           <Route path="/albums" element={<Allalbums />}></Route>
           <Route path="/genre/:genreType" element={<Genre />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
           <Route path="/music/:id" element={<Music />}></Route>
+          <Route path="/wishlist" element={<Wishlist />}></Route>
           <Route path="/searchError" element={<Invalidsearch />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
