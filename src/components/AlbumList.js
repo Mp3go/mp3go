@@ -7,7 +7,10 @@ export default function AlbumList({ albums }) {
       <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 justify-center mt-5'>
         {albums.map((album) => (
           <Card
-            album = {album}
+            id = {album.id}
+            image = {album.imagepath}
+            price = {album.price}
+            title={album.albumName}
           />
         ))}
       </div>
