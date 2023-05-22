@@ -5,7 +5,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import SearchInput from '../search/SearchInput';
 import Example1 from './dropit';
 import ToggleButton from '../toggle-button/togglebuttoncomponent';
-
+import { BsFillHeartFill } from "react-icons/bs";
 const navigation = [
   { name: 'Home', href: '#', current: true },
   { name: 'Album', href: '#', current: false },
@@ -74,13 +74,8 @@ export default function Example() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               
               <ToggleButton/>
-                <button
-                  type="button"
-                  className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+               
+                <BsFillHeartFill/>
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>

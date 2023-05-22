@@ -6,6 +6,7 @@ import Genre from "./components/Genre/Genre";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Music from "./components/Music/Music";
 import Cart from "./components/Cart/Cart";
+import Contact from "./components/footer/footer.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/music/:id" element={<Music />}></Route>
         </Routes>
       </Router>
+      <Contact />
     </>
   );
 }
