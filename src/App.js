@@ -16,9 +16,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <Router>
-        <ScrollToTop />
-        <div className="bg-slate-50 dark:text-white dark:bg-black p-0 m-0">
+      <div className="bg-slate-50 dark:text-white dark:bg-[#202124] p-0 m-0">
+        <Router>
+          <ScrollToTop />
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
             <Route path="/albums" element={<Allalbums />}></Route>
@@ -29,8 +29,8 @@ function App() {
             <Route path="/searchError" element={<Invalidsearch />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
-        </div>
-      </Router>
+        </Router>
+      </div>
       {/* <Footer /> */}
     </>
   );

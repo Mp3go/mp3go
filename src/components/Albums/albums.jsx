@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import data from "../data";
-import Card from "../Card";
+import Card from "./card";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import ReactSlider from "react-slider";
@@ -94,12 +94,12 @@ export default function Allalbums() {
     setRange({ min: data[0], max: data[1] });
   }
   return (
-    <div className="grid grid-cols-5 gap-2 mt-0 min-h-[100vh]">
-      <div className="col-span-2 md:col-span-1 border-2 p-2">
-        <h3 className="font-bold text-center">Apply Filters</h3>
+    <div className="grid grid-cols-5 gap-2 mt-0 pt-5 min-h-[100vh]">
+      <div className="col-span-2 md:col-span-1 p-2">
+        <h3 className="font-bold text-center leading-9">Apply Filters</h3>
         <div className="p-1">
           <div>
-            <h4 className="font-bold my-3">Select Category</h4>
+            <h4 className="font-bold my-5+">Select Category</h4>
             <Select
               onChange={handleCategoryChange}
               closeMenuOnSelect={false}
@@ -144,10 +144,10 @@ export default function Allalbums() {
         </div>
       </div>
       <div className="md:col-span-4 col-span-3 min-h-[80vh] justify-center">
-        <h1 className="text-center font-bold text-3xl p-2">
-          Complete Album Collection
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 p-2 pt-5 ">
+        <p className="text-6xl text-center font-black leading-9 m-5">
+          Album Collections
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 p-2 pt-5 ">
           {dataa.map((card) => (
             <Card
               image={card.imagepath}

@@ -10,26 +10,25 @@ export default function Card({ image, title, price, id }) {
   const isWishlistPage = location.pathname === "/wishlist";
 
   return (
-    <div className="rounded overflow-hidden shadow-lg h-80 md:h-96 max-w-sm transition ease-in-out delay-150 hover:scale-105 duration-300 bg-white dark:bg-black">
+    <div className="rounded overflow-hidden shadow-lg w-full h-80 md:h-96 max-w-sm md:mb-5 transition ease-in-out delay-150 hover:scale-105 duration-300 bg-white dark:bg-black">
       <Link to={`/music/${id}`}>
-        <div className="rounded shadow-lg h-80 md:h-96 max-w-sm transition ease-in-out delay-150 hover:scale-105 duration-300">
-          <img className="w-full h-44 sm:h-48" src={image} alt="card" />
-          <div className="px-6 lg:py-4 h-32 mt-2">
-            <div className="font-bold text-xl mb-2">{title}</div>
-            <div className="font-bold mb-2">Rs{price}</div>
-            <div className="flex justify-between">
-              {!isWishlistPage && (
-                <button className="bg-none text-white md:text-[1rem] lg:text-[1.2rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
-                  Wishlist
-                </button>
-              )}
-              <button className="bg-none text-white md:text-[1rem] lg:text-[1.2rem] text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
+        <img className="w-full h-44 sm:h-48 p-3" src={image} alt="card" />{" "}
       </Link>
+      <div className="px-6 lg:py-4 h-32 mt-2">
+        <div className="font-bold">{title}</div>
+        <p className="text-sm text-gray-400 mb-2">by Artist</p>
+        <div className="font-bold text-xl mb-2">Rs {price}</div>
+        <div className="flex justify-between">
+          {!isWishlistPage && (
+            <button className="dark:bg-[#20212499] rounded-sm text-white md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
+              Wishlist
+            </button>
+          )}
+          <button className="dark:bg-[#20212499] rounded-sm text-white md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
+            Add to Cart
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
