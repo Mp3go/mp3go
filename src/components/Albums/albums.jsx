@@ -94,7 +94,7 @@ export default function Allalbums() {
     setRange({ min: data[0], max: data[1] });
   }
   return (
-    <div className="grid grid-cols-5 gap-2 mt-5">
+    <div className="grid grid-cols-5 gap-2 mt-0 min-h-[100vh]">
       <div className="col-span-2 md:col-span-1 border-2 p-2">
         <h3 className="font-bold text-center">Apply Filters</h3>
         <div className="p-1">

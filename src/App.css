@@ -37,16 +37,16 @@
   }
 }
 
-.example-track{
-  color:grey;
+.example-track {
+  color: grey;
   background-color: rgb(220, 219, 219);
   height: 1.5px;
   display: flex;
   align-items: center;
-  position:relative;
-  top:14px;
+  position: relative;
+  top: 14px;
 }
 
-.example-track-1{
-  justify-content: cente;
+.example-track-1 {
+  justify-content: center;
 }

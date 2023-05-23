@@ -14,9 +14,9 @@ export default function Music() {
   const final = result[0];
   return (
     <>
-      <div className="h-screen w-full mt-[30px]">
+      <div className="h-screen w-full">
         <div className="flex h-3/5 m-0">
-          <div className="w-1/2 flex justify-center">
+          <div className="w-1/2 flex justify-center bg-white">
             <img
               className="w-50 h-full  mx-5"
               src={final.imagepath}
@@ -44,12 +44,12 @@ export default function Music() {
           <button></button>
           <button></button>
         </div>
-        <div>
+        <div className="h-full">
           <h1 className="mt-10 mb-3 text-center font-sans capitalize text-5xl font-medium">
             Suggestions
           </h1>
           <hr className="w-[95%] h-[1.5px] bg-gray text-gray flex justify-center m-auto" />
-          <div className="m-5 w-[95%] ">
+          <div className="p-5 w-[100%] h-full dark:bg-black bg-slate-50">
             {suggestions.map((data) => {
               return (
                 <Card
