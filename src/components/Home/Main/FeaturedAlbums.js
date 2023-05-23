@@ -1,43 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Ripple, initTE } from "tw-elements";
+import data from "../../data";
 import AlbumList from "../../AlbumList";
 
 initTE({ Ripple });
 
 export default function FeaturedAlbums() {
-  const [featuredAlbums, setfeaturedAlbums] = useState([
-    {
-      image: "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-      title: "Card title",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card's content",
-    },
-    {
-      image: "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-      title: "Card title",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card's content",
-    },
-    {
-      image: "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-      title: "Card title",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card's content",
-    },
-    {
-      image: "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-      title: "Card title",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card's content",
-    },
-    {
-      image: "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-      title: "Card title",
-      description:
-        "Some quick example text to build on the card title and make up the bulk of the card's content",
-    },
-  ]);
+  const array = data;
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  const randomElements = shuffleArray(array).slice(0, 5);
+
+  const [featuredAlbums, setfeaturedAlbums] = useState(randomElements);
 
   return (
     <div className="mx-4 mt-4 py-2">
