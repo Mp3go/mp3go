@@ -10,6 +10,7 @@ import Error404 from "./components/ErrorPage/404";
 import Invalidsearch from "./components/ErrorPage/invalid";
 import Cart from "./components/Cart/Cart";
 import Wishlist from "./components/Wishlist/Wishlist";
+import Footer from "./components/footer/footer.jsx";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="*" element={<Error404 />} />
         </Routes>
       </Router>
+      <Footer/>
     </>
   );
 }
