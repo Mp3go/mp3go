@@ -10,7 +10,7 @@ export default function Card({ image, title, price, id }) {
   const isWishlistPage = location.pathname === "/wishlist";
 
   return (
-    <div className="rounded shadow-lg h-80 md:h-96 max-w-sm transition ease-in-out delay-150 hover:scale-105 duration-300">
+    <div className="rounded overflow-hidden shadow-lg h-80 md:h-96 max-w-sm transition ease-in-out delay-150 hover:scale-105 duration-300 bg-white dark:bg-black">
       <Link to={`/music/${id}`}>
         <div className="rounded shadow-lg h-80 md:h-96 max-w-sm transition ease-in-out delay-150 hover:scale-105 duration-300">
           <img className="w-full h-44 sm:h-48" src={image} alt="card" />
