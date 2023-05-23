@@ -22,14 +22,14 @@ export default function FeaturedAlbums() {
 
   return (
     <div className="mx-4 mt-4 py-2">
-      <h1 className="mt-10 mb-2 text-center font-sans capitalize text-5xl font-medium">
+      <h1 className="mt-10 mb-2 text-center font-serif capitalize text-5xl font-medium">
         Featured Albums
       </h1>
-      <hr className="w-1/3 mx-auto" />
+      <hr className="w-[25%] mx-auto" />
       <AlbumList albums={featuredAlbums} />
       <div className="mt-2 flex justify-center ">
         <Link to="/albums">
-          <button className="text-center text-white rounded-md p-4 hover:text-gray cursor-pointer bg-black dark:bg-black">
+          <button className="text-center text-white rounded-md p-4 hover:text-gray cursor-pointer bg-black">
             See More
           </button>
         </Link>

@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="bg-slate-50 dark:text-white dark:bg-[#202124] p-0 m-0">
+      <div className="bg-[#DEE4E799] dark:text-white dark:bg-[#202124] p-0 m-0">
         <Router>
           <ScrollToTop />
           <Routes>

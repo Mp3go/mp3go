@@ -7,7 +7,7 @@ import Heading from "./Heading";
 export default function home() {
   return (
     <>
-      <div className="bg-[#DEE4E799] dark:bg-[#202124]">
+      <div className="">
         <div className="pt-[3rem]">
           <Heading />
           <Carousel />
