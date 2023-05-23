@@ -17,7 +17,7 @@ export default function Switcher() {
   return (
     <>
       <DarkModeSwitch
-        style={{}}
+        style={{ flex: 1 }}
         checked={darkSide}
         onChange={toggleDarkMode}
         size={30}
