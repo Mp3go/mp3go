@@ -12,7 +12,7 @@ export default function NewReleases() {
 
   return (
     <div className="mx-4 my-4 py-2">
-      <h1 className="mt-10 mb-2 text-center font-serif capitalize text-5xl font-medium">
+      <h1 className="mt-10 mb-2 text-center font-sans capitalize text-5xl font-medium">
         New Releases
       </h1>
       <hr className="w-1/5 mx-auto" />

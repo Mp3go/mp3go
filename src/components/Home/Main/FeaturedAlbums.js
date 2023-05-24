@@ -22,7 +22,7 @@ export default function FeaturedAlbums() {
 
   return (
     <div className="mx-4 mt-4 py-2">
-      <h1 className="mt-10 mb-2 text-center font-serif capitalize text-5xl font-medium">
+      <h1 className="mt-10 mb-2 text-center font-sans capitalize text-5xl font-medium">
         Featured Albums
       </h1>
       <hr className="w-[25%] mx-auto" />
