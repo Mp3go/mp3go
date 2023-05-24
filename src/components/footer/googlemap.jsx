@@ -2,7 +2,6 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
 const GoogleMap = () => {
-  // Replace 'YOUR_API_KEY' with your actual Google Maps API key
   const apiKey = 'AIzaSyB1FZpRhAWyYeMKVsTf9Aml86Lnkm5GPRc';
 
   const mapOptions = {
@@ -13,8 +12,29 @@ const GoogleMap = () => {
     zoom: 10,
   };
 
+  const [mapContainerStyle, setMapContainerStyle] = React.useState({
+    height: '400px', // Initial height for larger screens
+    width: '100%', 
+  });
+
+  
+  const handleResize = () => {
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    setMapContainerStyle(prevStyle => ({
+      ...prevStyle,
+      height: `${windowHeight * 0.6}px`,
+    }));
+  };
+
+
+  React.useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div style={{ height: '80%', width: '280%' }}>
+    <div style={mapContainerStyle}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: apiKey }}
         defaultCenter={mapOptions.center}
