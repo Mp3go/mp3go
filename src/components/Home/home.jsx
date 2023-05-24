@@ -6,7 +6,7 @@ import NewReleases from "./Main/NewReleases";
 export default function home() {
   return (
     <>
-      <div className="bg-[#DEE4E799]">
+      <div className="bg-[#DEE4E799] pb-4">
         <div className="pt-[3rem]">
           <Carousel />
           <NewReleases />
