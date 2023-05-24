@@ -78,7 +78,7 @@ export default function Example() {
                   <span className="sr-only">View notifications</span>
                 </button>
                 
-                <div className="flex flex-row items-center p-2 justify-between">
+                <div className="flex flex-row items-center p-2 justify-between text-white">
                   <ToggleButton />
                   <BsHeart />
                   <BsCartFill />
