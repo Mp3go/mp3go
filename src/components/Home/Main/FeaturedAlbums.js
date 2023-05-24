@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Ripple, initTE } from "tw-elements";
 import data from "../../data";
 import AlbumList from "../../AlbumList";
@@ -20,27 +21,18 @@ export default function FeaturedAlbums() {
   const [featuredAlbums, setfeaturedAlbums] = useState(randomElements);
 
   return (
-    <div className="mx-4 my-4 py-2">
+    <div className="mx-4 mt-4 py-2">
       <h1 className="mt-10 mb-2 text-center font-sans capitalize text-5xl font-medium">
         Featured Albums
       </h1>
-      <hr className="w-1/3 mx-auto" />
-      {/* <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10  justify-center mt-5">
-        {featuredAlbums.map((card) => (
-          <Card
-            image={card.image}
-            title={card.title}
-            description={card.description}
-          />
-        ))}
-      </div> */}
-
+      <hr className="w-[25%] mx-auto" />
       <AlbumList albums={featuredAlbums} />
-
-      <div className="mt-2 flex justify-center text-gray-500 hover:text-black cursor-pointer">
-        <a href="/albums" className="text-center">
-          see more
-        </a>
+      <div className="mt-[5rem] flex justify-center ">
+        <Link to="/albums">
+          <button className="text-center text-white rounded-md px-[2rem] py-4 hover:text-gray cursor-pointer bg-black">
+            See More
+          </button>
+        </Link>
       </div>
     </div>
   );
