@@ -3,6 +3,7 @@ import Carousel from "./Carousel/carouselcomplete";
 import FeaturedAlbums from "./Main/FeaturedAlbums";
 import NewReleases from "./Main/NewReleases";
 import Heading from "./Heading";
+import TestimonialsCarousel from "./Testimonials/testimonialsCarousel";
 
 export default function home() {
   return (
@@ -13,6 +14,7 @@ export default function home() {
           <Carousel />
           <NewReleases />
           <FeaturedAlbums />
+          <TestimonialsCarousel />
         </div>
       </div>
     </>

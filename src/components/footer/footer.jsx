@@ -4,7 +4,7 @@ import GoogleMap from "./googlemap";
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-10">
+    <footer className="bg-gray-900 dark:bg-black text-white py-10">
       <div className="container mx-auto flex flex-wrap justify-between">
         <div className="w-full sm:w-1/2 lg:w-1/4 mb-6 sm:mb-0">
           <h3 className="text-lg font-bold">Contact Us</h3>

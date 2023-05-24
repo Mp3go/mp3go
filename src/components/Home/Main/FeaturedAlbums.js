@@ -27,9 +27,9 @@ export default function FeaturedAlbums() {
       </h1>
       <hr className="w-[25%] mx-auto" />
       <AlbumList albums={featuredAlbums} />
-      <div className="mt-2 flex justify-center ">
+      <div className="mt-[5rem] flex justify-center ">
         <Link to="/albums">
-          <button className="text-center text-white rounded-md p-4 hover:text-gray cursor-pointer bg-black">
+          <button className="text-center text-white rounded-md px-[2rem] py-4 hover:text-gray cursor-pointer bg-black">
             See More
           </button>
         </Link>

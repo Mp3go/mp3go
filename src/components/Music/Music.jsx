@@ -16,15 +16,15 @@ export default function Music() {
   return (
     <>
       <div className="pt-5 h-full  w-full">
-        <div className="flex flex-col md:flex-row h-full min-h-[80vh] m-0">
-          <div className="w-1/2 flex justify-center items-center">
+        <div className="flex flex-col md:flex-row h-[70vh] m-0">
+          <div className="w-1/3 flex justify-center items-center p-2">
             <img
-              className="w-[100%] h-[100%] mx-5"
+              className="w-[100%] h-[90%] mx-5"
               src={final.imagepath}
               alt="Music"></img>
           </div>
-          <div className="w-1/2 p-4 flex flex-col">
-            <div className="text-5xl text-center font-black leading-6 m-5">
+          <div className="w-2/3 p-4 flex flex-col">
+            <div className="text-6xl text-center font-black leading-6 m-5">
               {final.albumName}
             </div>
             <div className="text-2xl lg:text-3xl font-sans">
