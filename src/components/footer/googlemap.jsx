@@ -14,19 +14,19 @@ const GoogleMap = () => {
 
   const [mapContainerStyle, setMapContainerStyle] = React.useState({
     height: '400px', // Initial height for larger screens
-    width: '100%', // Take full width of the parent container
+    width: '100%', 
   });
 
-  // Update the map container height dynamically based on available space
+  
   const handleResize = () => {
     const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     setMapContainerStyle(prevStyle => ({
       ...prevStyle,
-      height: `${windowHeight * 0.6}px`, // Adjust the percentage to your preference
+      height: `${windowHeight * 0.6}px`,
     }));
   };
 
-  // Attach the resize event listener
+
   React.useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
