@@ -34,6 +34,25 @@ function Footer() {
           <Example />
         </div>
       </div>
+      
+      <style jsx>{`
+        /* Responsive Styles */
+        @media (max-width: 640px) {
+          .container {
+            flex-direction: column;
+          }
+          
+          .w-full {
+            width: 100%;
+          }
+          
+          .sm:w-1/2, .lg:w-1/4 {
+            width: 100%;
+          }
+        }
+        
+        /* Add more media queries for other screen sizes if needed */
+      `}</style>
     </footer>
   );
 }
