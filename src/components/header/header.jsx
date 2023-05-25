@@ -5,6 +5,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import SearchInput from "../search/SearchInput";
 import Dropdown from "./dropit";
 import { BsHeart, BsCartFill } from "react-icons/bs";
+import {Link} from "react-router-dom";
 
 import ToggleButton from "../toggle-button/togglebutton";
 
@@ -80,8 +81,8 @@ export default function Example() {
                 
                 <div className="flex flex-row items-center p-2 justify-between text-white">
                   <ToggleButton />
-                  <BsHeart />
-                  <BsCartFill />
+                  <Link to="/wishlist"><BsHeart /></Link>
+                  <Link to="/cart"><BsCartFill /></Link>
                 </div>
                 <Menu as="div" className="relative ml-3">
                   <div>
