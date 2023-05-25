@@ -16,7 +16,7 @@ export default function Genre() {
       case "punjabi":
       case "jazz":
       case "rock":
-        return card.genre === genreType;
+        return card.genre.toLowerCase() === genreType;
 
       default:
         return true;
@@ -28,9 +28,10 @@ export default function Genre() {
   );
 
   return (
-    <div className="my-4 p-2">
+    // <div className="my-4 p-2">
+    <div className='pt-10 pb-10 bg-[#DEE4E799] dark:bg-[#202124] min-h-[100vh] px-10'>
       <h2 className="ml-3 text-6xl font-bold leading-none">
-        {genreType.toLowerCase() === "all" ? "All Genre" : genreType}
+        {genreType.toLowerCase() === "all" ? "All Genre" : genreType.toUpperCase()}
       </h2>
       <AlbumList albums={albums} />
     </div>

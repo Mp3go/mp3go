@@ -6,7 +6,7 @@ export default function CartSummary({ cartItems }) {
   cartItems.map((item) => setSubTotal(subTotal + item.qty * item.price));
 
   return (
-      <div className='md:w-1/4 xl:w-1/4 w-full bg-gray-100 h-full'>
+      <div className='md:w-1/4 xl:w-1/4 w-full bg-gray-900 bg-opacity-10 dark:bg-[#303134] h-full'>
         <div className='flex flex-col md:h-screen px-14 py-20 justify-between overflow-y-auto'>
           <div>
             <p className='text-4xl font-black leading-9'>Summary</p>
