@@ -64,7 +64,7 @@ export default function carouselcomp() {
       <Carousel
         cards={cards}
         height="350px"
-        width="75%"
+        width="60%"
         margin="0 auto"
         offset={200}
         showArrows={false}
