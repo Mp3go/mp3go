@@ -14,7 +14,7 @@ export default function Wishlist() {
   };
 
   return (
-    <div className='pt-10 pb-10 bg-[#DEE4E799] dark:bg-[#202124] min-h-[100vh]'>
+    <div className='pt-10 pb-10 bg-[#DEE4E799] dark:bg-[#202124] min-h-[100vh] px-10'>
       <p className="ml-5 text-2xl font-bold leading-none">My Wishlist</p>
       <AlbumList albums={wishlist} addToWishlist={addToWishlist} />
     </div>

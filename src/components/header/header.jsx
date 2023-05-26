@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import SearchInput from "../search/SearchInput";
 import Dropdown from "./dropit";
 import { BsHeart, BsCartFill } from "react-icons/bs";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import ToggleButton from "../toggle-button/togglebutton";
 
@@ -52,25 +52,27 @@ export default function Example() {
                 <div className="flex">
                   <SearchInput />
                 </div>
-                <div><div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}>
-                        {item.name}
-                      </a>
-                    ))}
-                    <Dropdown />
+                <div>
+                  <div className="hidden sm:ml-6 sm:block">
+                    <div className="flex space-x-4">
+                      {navigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className={classNames(
+                            item.current
+                              ? "bg-gray-900 text-white"
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                            "rounded-md px-3 py-2 text-sm font-medium"
+                          )}
+                          aria-current={item.current ? "page" : undefined}>
+                          {item.name}
+                        </a>
+                      ))}
+                      <Dropdown />
+                    </div>
                   </div>
-                </div></div>
+                </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
@@ -78,11 +80,15 @@ export default function Example() {
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="sr-only">View notifications</span>
                 </button>
-                
+
                 <div className="flex flex-row items-center p-2 justify-between text-white">
                   <ToggleButton />
-                  <Link to="/wishlist"><BsHeart /></Link>
-                  <Link to="/cart"><BsCartFill /></Link>
+                  <Link to="/wishlist">
+                    <BsHeart />
+                  </Link>
+                  <Link to="/cart">
+                    <BsCartFill />
+                  </Link>
                 </div>
                 <Menu as="div" className="relative ml-3">
                   <div>
