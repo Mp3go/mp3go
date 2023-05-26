@@ -2,7 +2,7 @@ import React from "react";
 import Example from "./form";
 import GoogleMap from "./googlemap";
 
-function Footer() {
+function Contactus() {
   return (
     <footer className="bg-gray-900 dark:bg-black text-white py-10">
       <div className="container mx-auto flex flex-wrap justify-between">
@@ -57,4 +57,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Contactus;

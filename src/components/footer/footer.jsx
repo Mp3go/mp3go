@@ -2,16 +2,12 @@ import { Typography } from "@material-tailwind/react";
  
 const LINKS = [
   {
-    title: "Product",
-    items: ["Overview", "Features", "Solutions", "Tutorials"],
+    title: "",
+    items: [],
   },
   {
-    title: "Company",
-    items: ["About us", "Careers", "Press", "News"],
-  },
-  {
-    title: "Resource",
-    items: ["Blog", "Newsletter", "Events", "Help center"],
+    title: "CONSUMER POLICY",
+    items: ["Returns Policy", "Terms of Use", "PRIVACY POLICY", "Contact us"],
   },
 ];
  
@@ -39,7 +35,7 @@ export default function Example() {
                   <li key={link}>
                     <Typography
                       as="a"
-                      href="#"
+                      href="/contact"
                       color="gray"
                       className="py-1.5 font-normal transition-colors hover:text-blue-gray-900 text-white"
                     >
