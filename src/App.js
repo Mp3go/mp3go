@@ -11,6 +11,8 @@ import Invalidsearch from './components/ErrorPage/invalid';
 import Cart from './components/Cart/Cart';
 import Wishlist from './components/Wishlist/Wishlist';
 import Footer from './components/footer/footer.jsx';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -31,6 +33,10 @@ function App() {
           </Routes>
         </div>
       </Router>
+      <ToastContainer
+        progressClassName='toastProgress'
+        bodyClassName='toastBody'
+      />
       <Footer />
     </>
   );
