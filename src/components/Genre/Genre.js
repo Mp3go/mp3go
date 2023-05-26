@@ -16,7 +16,7 @@ export default function Genre() {
       case "punjabi":
       case "jazz":
       case "rock":
-        return card.genre.toLowerCase() === genreType;
+        return card.genre === genreType;
 
       default:
         return true;
