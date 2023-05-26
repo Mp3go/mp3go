@@ -2,12 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import { Ripple, initTE } from "tw-elements";
+import { ToastContainer, toast } from "react-toastify";
 
 initTE({ Ripple });
 
 export default function Card({ image, title, price, id }) {
   let location = useLocation();
   const isWishlistPage = location.pathname === "/wishlist";
+
+  function addtoWishlist(){
+    toast.success("Item added to Wishlist ")
+  }
+  function addtoCart(){
+    toast.success("Item successfully added to cart ")
+  }
 
   return (
     <div className="rounded-lg overflow-hidden shadow-lg h-80 md:h-96 max-w-sm transition ease-in-out delay-150 hover:scale-105 duration-300 dark:bg-black bg-white">
@@ -20,11 +28,11 @@ export default function Card({ image, title, price, id }) {
         <div className="font-bold text-xl mb-2">Rs {price}</div>
         <div className="flex justify-between">
           {!isWishlistPage && (
-            <button className="text-white rounded-md md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black dark:bg-[#20212499]">
+            <button onClick={() => addtoWishlist()} className="text-white rounded-md md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black dark:bg-[#20212499]">
               Wishlist
             </button>
           )}
-          <button className="text-white rounded-md md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black  dark:bg-[#20212499]">
+          <button onClick={() => addtoCart()} className="text-white rounded-md md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black  dark:bg-[#20212499]">
             Add to Cart
           </button>
         </div>

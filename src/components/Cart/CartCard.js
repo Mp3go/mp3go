@@ -33,12 +33,12 @@ export default function CartCard({
 
   return (
     <div>
-      <div className='md:flex items-center mt-2 py-8 border-t border-gray-300 dark:border-[#3c4043]'>
+      <div className='md:flex items-center mt-2 py-8 border-t border-gray-400 dark:border-[#3c4043]'>
         <div className='w-1/5'>
           <img
             src='https://static.theprint.in/wp-content/uploads/2022/06/PUNJABI-SONGS.jpg'
             alt
-            className='w-full pl-3 h-40 object-center object-cover'
+            className='w-full rounded-sm pl-3 h-40 object-center object-cover'
           />
         </div>
         <div className='md:pl-3 md:w-3/4'>
@@ -93,7 +93,7 @@ export default function CartCard({
         </div>
       </div>
       
-      <div className='md:flex items-center mt-2 py-8 border-t border-gray-300 dark:border-[#3c4043]'>
+      <div className='md:flex items-center mt-2 py-8 border-t border-gray-400 dark:border-[#3c4043]'>
         <div className='w-1/5'>
           <img
             src='https://static.theprint.in/wp-content/uploads/2022/06/PUNJABI-SONGS.jpg'
