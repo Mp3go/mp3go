@@ -50,3 +50,19 @@
 .example-track-1 {
   justify-content: center;
 }
+
+
+.Toastify__toast--success {
+  background: #040213c8 !important;
+}
+.Toastify__toast--error {
+  background: #FCA7A9 !important;
+}
+.toastBody {
+  font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
+  color: white; /* #10171D */
+  font-size: 0.875rem !important;
+}
+.toastProgress {
+  background: #333F48 !important;
+}

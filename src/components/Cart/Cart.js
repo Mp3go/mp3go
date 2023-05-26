@@ -5,6 +5,7 @@ import CartSummary from './CartSummary';
 // When 'add to cart' button is clicked, data is passed from Card.js to database and retreived from db here.
 // On adding backend logic, we will write the complete code of adding, deleting and retrieving data
 // Todo: See about adding setCartItem() into another arrow function 
+// Todo: Add scrollbar? 
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -30,7 +31,8 @@ export default function Cart() {
   };
 
   return (
-    <div className='flex flex-col justify-start mt-10 pl-5 py-5'>
+    <div className='bg-[#DEE4E799] dark:bg-[#202124]'>
+    <div className='flex flex-col justify-start pl-5 py-10'>
       <h2 className='text-5xl font-black leading-10 pt-3 sm:ml-2 lg:ml-28'>
         Mp3go Cart
       </h2>
@@ -52,7 +54,7 @@ export default function Cart() {
       </div>
 
       {/* Back link */}
-      <div className='flex items-center text-gray-500 hover:text-gray-600 cursor-pointer sm:ml-2 lg:ml-28'>
+      <div className='flex items-center text-gray-500 hover:text-gray-600 dark:hover:text-white cursor-pointer sm:ml-2 lg:ml-28'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           className='icon icon-tabler icon-tabler-chevron-left'
@@ -71,6 +73,7 @@ export default function Cart() {
         <p className='text-sm pl-2 leading-none'>Back</p>
       </div>
       
+    </div>
     </div>
   );
 }

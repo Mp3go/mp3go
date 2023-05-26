@@ -23,7 +23,7 @@ const SearchInput = () => {
        
         @media (max-width: 340px) {
           input {
-            width: 100%;
+            width: 53%%;
           }
         }
         
