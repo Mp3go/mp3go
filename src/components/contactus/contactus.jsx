@@ -24,34 +24,32 @@ function Contactus() {
               </a>
             </li>
           </ul>
-          
         </div>
-        <div className="w-full sm:w-1/2 lg:w-1/4 mb-6 sm:mb-0"><GoogleMap /></div>
         <div className="w-full sm:w-1/2 lg:w-1/4 mb-6 sm:mb-0">
-        
+          <GoogleMap />
         </div>
+        <div className="w-full sm:w-1/2 lg:w-1/4 mb-6 sm:mb-0"></div>
         <div className="w-full sm:w-1/2 lg:w-1/4 mb-6 sm:mb-0">
           <Example />
         </div>
       </div>
-      
+
       <style jsx>{`
         /* Responsive Styles */
         @media (max-width: 640px) {
           .container {
             flex-direction: column;
           }
-          
+
           .w-full {
             width: 100%;
           }
-          
-          .sm:w-1/2, .lg:w-1/4 {
+
+          .sm:w-1/2,
+          .lg:w-1/4 {
             width: 100%;
           }
         }
-        
-        
       `}</style>
     </footer>
   );
