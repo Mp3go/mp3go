@@ -40,12 +40,12 @@ export default function Example() {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src="https://th.bing.com/th/id/R.a4f2b68efcdab59b56c5d79999cd11ed?rik=k6%2bQMyi7L5bQmg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fRcd%2fgAz%2fRcdgAzXgi.png&ehk=omBZAIcB0SJO0ysB9q96pyTK%2bvaadtx0Mjk1FqsvKSE%3d&risl=&pid=ImgRaw&r=0"
                     alt="Your Company"
                   />
                   <img
                     className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src="https://th.bing.com/th/id/R.a4f2b68efcdab59b56c5d79999cd11ed?rik=k6%2bQMyi7L5bQmg&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fRcd%2fgAz%2fRcdgAzXgi.png&ehk=omBZAIcB0SJO0ysB9q96pyTK%2bvaadtx0Mjk1FqsvKSE%3d&risl=&pid=ImgRaw&r=0"
                     alt="Your Company"
                   />
                 </div>

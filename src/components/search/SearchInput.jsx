@@ -23,13 +23,14 @@ const SearchInput = () => {
        
         @media (max-width: 340px) {
           input {
-            width: 53%%;
+            width: 20px;
           }
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 340px) {
           .absolute {
             left: 1rem;
+            
           }
           
           .pl-2 {
