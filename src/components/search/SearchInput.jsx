@@ -8,7 +8,7 @@ const SearchInput = () => {
         <FontAwesomeIcon className="text-slate-400 h-5" icon={faSearch} />
       </span>
       <input
-        className="py-3 px-10 w-full 
+        className="py-3 px-10 
         text-slate-500 
         focus:outline-none 
         outline-none 
@@ -20,22 +20,26 @@ const SearchInput = () => {
         placeholder="Search for songs"
       />
       <style jsx>{`
-       
-        @media (max-width: 340px) {
+        @media (max-width: 640px) {
           input {
-            width: 20px;
+            width: 62%;
           }
         }
-        
-        @media (max-width: 340px) {
-          .absolute {
-            left: 1rem;
+          @media (max-width: 388px) {
+            input {
+              width: 40%;
+            }
+          }
+          @media (max-width: 640px) {
+            .absolute {
+              left: 1rem;
+            }
             
-          }
+            .pl-2 {
+              padding-left: 0.5rem;
+            }
+            }
           
-          .pl-2 {
-            padding-left: 0.5rem;
-          }
         }
       `}</style>
     </div>
