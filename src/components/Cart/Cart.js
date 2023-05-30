@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CartCard from './CartCard';
 import CartSummary from './CartSummary';
+import { useAxios } from '../../hooks/useAxios';
 
 // When 'add to cart' button is clicked, data is passed from Card.js to database and retreived from db here.
 // On adding backend logic, we will write the complete code of adding, deleting and retrieving data
@@ -8,19 +9,9 @@ import CartSummary from './CartSummary';
 // Todo: Add scrollbar? 
 
 export default function Cart() {
-  const [cartItems, setCartItems] = useState([]);
+  const {data, error} = useAxios('/user/cart', "GET");
+  const [cartItems, setCartItems] = useState(data);
   let cartId;
-
-  // const addCartItem = (album) => {
-  //   if (cartItems.length === 0) {
-  //     cartId = 1;
-  //   } else {
-  //     cartId = cartItems[cartItems.length - 1].id + 1;
-  //   }
-
-  // const item = { ...album, cartId };
-  // setCartItems([...cartItems, item]);
-  // }
 
   const removeCartItem = (cartId) => {
     setCartItems(
