@@ -1,18 +1,22 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import data from "../data";
 import { Navigate } from "react-router-dom";
 import Card from "../Card";
 import { BsHeart, BsCartFill } from "react-icons/bs";
+import { useAxios } from "../../hooks/useAxios";
+import { useState, useEffect } from "react";
 
 export default function Music() {
   const params = useParams();
-  const result = data.filter((a) => a.id === parseInt(params.id));
-  if (result.length === 0) {
-    return <Navigate to="/searchError" />;
-  }
-  const suggestions = data.filter((a) => a.genre === result[0].genre);
-  const final = result[0];
+  // let [data2, setData2] = useState([]);
+  const { data, error } = useAxios(`/albums/${params.id}`, "GET");
+
+  // useEffect(() => {
+  //   if (data2) {
+  //     let sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+  //     setData2(sortedData);
+  //   }
+  // }, [data2]);
   return (
     <>
       <div className="pt-5 h-full  w-full  px-[50px]">
@@ -20,25 +24,28 @@ export default function Music() {
           <div className="w-1/3 flex justify-center items-center p-2">
             <img
               className="w-[80%] h-[80%] mx-5"
-              src={final.imagepath}
+              src={data ? data.img : null}
               alt="Music"></img>
           </div>
           <div className="w-2/3 h-[90%] p-4 flex flex-col">
             <div className="text-6xl text-center font-black leading-6 m-5">
-              {final.albumName}
+              {data ? data.name : null}
             </div>
             <div className="text-2xl lg:text-3xl font-sans">
-              <span className="font-bold">Genre: </span> {final.genre}
+              <span className="font-bold">Genre: </span>{" "}
+              {data ? data.language : null}
             </div>
             <div className="text-2xl lg:text-3xl font-sans">
               <span className="font-bold">Artist: </span>
+              {data ? [...data.artist] : null}
             </div>
             <div className="text-2xl lg:text-3xl font-sans">
               <span className="font-bold">Price: </span>
-              Rs {final.price}
+              Rs {data ? data.price : null}
             </div>
             <div className="text-2xl lg:text-3xl font-sans">
               <span className="font-bold">Year of Release: </span>
+              {data ? data.year : null}
             </div>
             <div className="flex-1 flex flex-col justify-end">
               <div className="flex flex-col md:flex-row md:mt-5 justify-between justify-self-end">
@@ -63,16 +70,18 @@ export default function Music() {
           </h1>
           <hr className="w-1/5 mx-auto" />
           <div className="p-5 w-[100%] h-full ">
-            {suggestions.map((data) => {
-              return (
-                <Card
-                  image={data.imagepath}
-                  title={data.genre}
-                  price={data.price}
-                  id={data.id}
-                />
-              );
-            })}
+            {/* {data2
+              ? data2.map((data) => {
+                  return (
+                    <Card
+                      image={data.imagepath}
+                      title={data.genre}
+                      price={data.price}
+                      id={data.id}
+                    />
+                  );
+                })
+              : null} */}
           </div>
         </div>
       </div>
