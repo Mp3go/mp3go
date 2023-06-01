@@ -30,6 +30,9 @@ export const useAxios = (url, method, config = {}) => {
         if (error.response.status === 404) {
           navigate("/searchError");
           return;
+        } else {
+          navigate("/searchError");
+          return;
         }
 
         setError(error);

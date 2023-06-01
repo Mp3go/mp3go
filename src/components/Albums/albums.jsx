@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import data from "../data";
 import Card from "./card";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import ReactSlider from "react-slider";
 import { useAxios } from "../../hooks/useAxios";
-import { Link } from "react-router-dom";
 
 const animatedComponents = makeAnimated();
 
@@ -170,15 +168,13 @@ export default function Allalbums() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2 pt-5 h-full container">
           {dataa
             ? dataa.map((card) => (
-                <Link to={`/music/${card._id}`}>
-                  <Card
-                    image={card.img}
-                    title={card.name}
-                    price={card.price}
-                    artist={card.artist}
-                    id={card.id}
-                  />
-                </Link>
+                <Card
+                  image={card.img}
+                  title={card.name}
+                  price={card.price}
+                  artist={card.artist}
+                  id={card._id}
+                />
               ))
             : null}
         </div>
