@@ -30,7 +30,7 @@ export default function Card({ image, title, price }) {
               <h4 className='mt-1 text-xl font-medium uppercase leading-tight truncate'>
                 {title}
               </h4>
-              <div className='mt-1'>Rs{price}</div>
+              <div className='mt-1'>Rs {price}</div>
             </div>
           </div>
         

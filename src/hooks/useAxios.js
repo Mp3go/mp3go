@@ -1,26 +1,42 @@
 import { useEffect, useState } from 'react';
-import axios from '../axios';
+import axiosAPI from '../axios';
+import { useNavigate } from 'react-router-dom';
 
-export const useAxios = (url, method, config={}) => {
+export const useAxios = (url, method, config = {}) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  console.log("in useAxios")
 
   useEffect(() => {
+    console.log('in useEffect', url);
     const getAPIData = async () => {
       try {
-        if(method==="GET"){
-            const res = await axios.get(url);
+        let res;
+        console.log('testing method', method);
+        if (method === 'GET') {
+          console.log('in get method 1');
+          res = await axiosAPI.get(url);
+          console.log('in get method 2', res);
+        } else {
+          res = await axiosAPI.post(url, config);
         }
-        else{
-            const res = await axios.post(url, config);
-        }
-        
+        console.log('in useaxiosAPI', res.data);
         setData(res.data);
       } catch (error) {
+        // console.log("This is error.response", error.response);
+        // console.log("This is error.response.data",error.response.data);
+        // console.log("This is error.response.status",error.response.status);
+        if (error.response.status === 404) {
+          navigate('/searchError'); 
+          return; 
+        }
+
         setError(error);
       }
     };
 
+    // unsubscribe and unmount
     getAPIData();
   }, [url, method]);
 

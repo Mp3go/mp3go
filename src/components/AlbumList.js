@@ -9,9 +9,10 @@ export default function AlbumList({ albums, addToWishlist }) {
           <Card
             key={album.id}
             id={album.id}
-            image={album.imagepath}
+            image={album.img}
             price={album.price}
-            title={album.albumName}
+            title={album.name}
+            artist={album.artist}
             addToWishlist={addToWishlist}
           />
         ))}

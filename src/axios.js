@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL : "http://localhost:3000"
+    baseURL : "https://mp3go-558d.onrender.com"
 })
 
 export default API;
