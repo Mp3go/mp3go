@@ -1,51 +1,49 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import data from "../data";
-import { Navigate } from "react-router-dom";
-import Card from "../Card";
-import { BsHeart, BsCartFill } from "react-icons/bs";
+import { BsHeartFill, BsCartFill } from "react-icons/bs";
+import { useAxios } from "../../hooks/useAxios";
+import FeaturedAlbums from "../Home/Main/FeaturedAlbums";
 
 export default function Music() {
-  const params = useParams();
-  const result = data.filter((a) => a.id === parseInt(params.id));
-  if (result.length === 0) {
-    return <Navigate to="/searchError" />;
-  }
-  const suggestions = data.filter((a) => a.genre === result[0].genre);
-  const final = result[0];
+  const { id } = useParams();
+  const { data, error } = useAxios(`/albums/${id}`, "GET");
   return (
     <>
+      {error ? <div>{error.response.data}</div> : null}
       <div className="pt-5 h-full  w-full  px-[50px]">
         <div className="flex flex-col md:flex-row h-[70vh] m-0">
-          <div className="w-1/3 flex justify-center items-center p-2">
+          <div className="md:w-1/3 flex justify-center items-center p-2">
             <img
-              className="w-[80%] h-[80%] mx-5"
-              src={final.imagepath}
+              className="w-[60%] h-[60%] md:w-[80%] md:h-[80%] align mx-5 shadow-xl"
+              src={data ? data.img : null}
               alt="Music"></img>
           </div>
           <div className="w-2/3 h-[90%] p-4 flex flex-col">
-            <div className="text-6xl text-center font-black leading-6 m-5">
-              {final.albumName}
+            <div className="text-6xl text-center font-black m-5 leading-none">
+              {data ? data.name : null}
             </div>
             <div className="text-2xl lg:text-3xl font-sans">
-              <span className="font-bold">Genre: </span> {final.genre}
+              <span className="font-bold">Genre: </span>{" "}
+              {data ? data.language : null}
             </div>
             <div className="text-2xl lg:text-3xl font-sans">
               <span className="font-bold">Artist: </span>
+              {data ? [...data.artist] : null}
             </div>
             <div className="text-2xl lg:text-3xl font-sans">
               <span className="font-bold">Price: </span>
-              Rs {final.price}
+              Rs {data ? data.price : null}
             </div>
             <div className="text-2xl lg:text-3xl font-sans">
               <span className="font-bold">Year of Release: </span>
+              {data ? data.year : null}
             </div>
             <div className="flex-1 flex flex-col justify-end">
               <div className="flex flex-col md:flex-row md:mt-5 justify-between justify-self-end">
                 <button className="flex-1 flex justify-center rounded-full items-center rounded-lg text-white md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full p-[.8rem] md:p-[1rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
                   <div className="px-2">Wishlist</div>
                   <div>
-                    <BsHeart />
+                    <BsHeartFill />
                   </div>
                 </button>
                 <button className="flex-1 flex justify-center rounded-full items-center rounded-lg text-white md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full p-[0.8rem] md:p-[1rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
@@ -56,23 +54,16 @@ export default function Music() {
             </div>
           </div>
         </div>
+        <div className="p-5">
+          <div className="py-2 text-6xl font-semibold">Lyrics</div>
+          <div className="p-5 bg-black mt-1 rounded-lg text-lg text-white ">
+            {data ? data.lyric : null}
+          </div>
+        </div>
 
         <div className="flex flex-col">
-          <h1 className="mt-10 mb-2 text-center font-serif capitalize text-5xl font-medium">
-            New Releases
-          </h1>
-          <hr className="w-1/5 mx-auto" />
           <div className="p-5 w-[100%] h-full ">
-            {suggestions.map((data) => {
-              return (
-                <Card
-                  image={data.imagepath}
-                  title={data.genre}
-                  price={data.price}
-                  id={data.id}
-                />
-              );
-            })}
+            <FeaturedAlbums />
           </div>
         </div>
       </div>

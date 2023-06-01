@@ -1,78 +1,76 @@
 import React, { useState, useEffect } from "react";
-import data from "../data";
 import Card from "./card";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import ReactSlider from "react-slider";
+import { useAxios } from "../../hooks/useAxios";
 
 const animatedComponents = makeAnimated();
-
-let categoryOptions = [
-  {
-    value: "Jazz",
-    label: "Jazz",
-  },
-  {
-    value: "PoP",
-    label: "PoP",
-  },
-  {
-    value: "Punjabi",
-    label: "Punjabi",
-  },
-  {
-    value: "Rock",
-    label: "Rock",
-  },
-];
-
-let artistOptions = [
-  {
-    value: "Beyonce",
-    label: "Beyonce",
-  },
-  {
-    value: "Adel",
-    label: "Adel",
-  },
-  {
-    value: "Rihanna",
-    label: "Rihanna",
-  },
-  {
-    value: "Drake",
-    label: "Drake",
-  },
-];
 
 export default function Allalbums() {
   const [category, setCategory] = useState([]);
   const [artist, setArtist] = useState([]);
-  const [dataa, setData] = useState(data);
-  const [range, setRange] = useState({ min: 0, max: 100 });
+  const [range, setRange] = useState({ min: 0, max: 1000 });
+  const { data: filterdata, error } = useAxios("/albums/data/filter", "GET");
+  const { data, error: error2 } = useAxios("/albums/all", "GET");
+  const [dataa, setData] = useState(data ? data : null);
+  console.log(data ? data.length : null);
   useEffect(() => {
-    if (category.length) {
-      let result = data.filter((ele) => {
-        if (
-          category.includes(ele.albumName) &&
-          range.min <= ele.price &&
-          ele.price <= range.max
-        ) {
-          return true;
-        }
-        return false;
-      });
+    if (category.length && artist.length) {
+      let result = data
+        ? data.filter((ele) => {
+            if (
+              category.includes(ele.language) &&
+              artist.includes(...ele.artist) &&
+              range.min <= ele.price &&
+              ele.price <= range.max
+            ) {
+              return true;
+            }
+            return false;
+          })
+        : null;
+      setData(result);
+    } else if (category.length) {
+      let result = data
+        ? data.filter((ele) => {
+            if (
+              category.includes(ele.language) &&
+              range.min <= ele.price &&
+              ele.price <= range.max
+            ) {
+              return true;
+            }
+            return false;
+          })
+        : null;
+      setData(result);
+    } else if (artist.length) {
+      let result = data
+        ? data.filter((ele) => {
+            if (
+              artist.includes(...ele.artist) &&
+              range.min <= ele.price &&
+              ele.price <= range.max
+            ) {
+              return true;
+            }
+            return false;
+          })
+        : null;
       setData(result);
     } else {
-      let result = data.filter((ele) => {
-        if (range.min <= ele.price && ele.price <= range.max) {
-          return true;
-        }
-        return false;
-      });
+      let result = data
+        ? data.filter((ele) => {
+            if (range.min <= ele.price && ele.price <= range.max) {
+              return true;
+            }
+            return false;
+          })
+        : null;
       setData(result);
     }
-  }, [category, artist, range]);
+  }, [category, artist, range, data]);
 
   function handleCategoryChange(event) {
     let category = [];
@@ -99,13 +97,22 @@ export default function Allalbums() {
         <h3 className="font-bold text-center leading-9">Apply Filters</h3>
         <div className="p-1">
           <div>
-            <h4 className="font-bold my-5+">Select Category</h4>
+            <h4 className="font-bold my-5+">Select Language</h4>
             <Select
               onChange={handleCategoryChange}
               closeMenuOnSelect={false}
               components={animatedComponents}
               isMulti
-              options={categoryOptions}
+              options={
+                filterdata
+                  ? filterdata[0].languages.map((item) => {
+                      return {
+                        value: item.name,
+                        label: item.name,
+                      };
+                    })
+                  : null
+              }
               className="text-black z-50"
             />
           </div>
@@ -116,7 +123,16 @@ export default function Allalbums() {
               closeMenuOnSelect={false}
               components={animatedComponents}
               isMulti
-              options={artistOptions}
+              options={
+                filterdata
+                  ? filterdata[0].artists.map((ele) => {
+                      return {
+                        value: ele,
+                        label: ele,
+                      };
+                    })
+                  : null
+              }
               className="text-black z-40"
             />
           </div>
@@ -130,32 +146,37 @@ export default function Allalbums() {
               className="bg-black mt-3 w-5/6 z-30"
               thumbClassName="bg-black text-white rounded-full p-1"
               trackClassName="example-track"
-              defaultValue={[0, 100]}
+              min={100}
+              max={1000}
+              defaultValue={[100, 1000]}
               ariaLabel={["Lower thumb", "Upper thumb"]}
               ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
               renderThumb={(props, state) => (
                 <div {...props}>{state.valueNow}</div>
               )}
               pearling
-              minDistance={1}
+              minDistance={10}
               onAfterChange={handlemin}
             />
           </div>
         </div>
       </div>
-      <div className="md:col-span-4 col-span-3 min-h-[80vh] justify-center">
-        <p className="text-6xl text-center font-black leading-9 m-5">
+      <div className="md:col-span-4 col-span-3 min-h-[80vh] justify-center mb-[100px]">
+        <p className="text-xl sm:text-3xl md:text-5xl   lg:text-6xl text-center font-black leading-9 m-5">
           Album Collections
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 p-2 pt-5 ">
-          {dataa.map((card) => (
-            <Card
-              image={card.imagepath}
-              title={card.albumName}
-              price={card.price}
-              id={card.id}
-            />
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2 pt-5 h-full container">
+          {dataa
+            ? dataa.map((card) => (
+                <Card
+                  image={card.img}
+                  title={card.name}
+                  price={card.price}
+                  artist={card.artist}
+                  id={card._id}
+                />
+              ))
+            : null}
         </div>
       </div>
     </div>
