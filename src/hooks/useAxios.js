@@ -10,6 +10,7 @@ export const useAxios = (url, method, config = {}) => {
 
   useEffect(() => {
     console.log('in useEffect', url);
+    
     const getAPIData = async () => {
       try {
         let res;
