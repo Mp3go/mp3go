@@ -1,18 +1,17 @@
-import { useAxios } from '../../hooks/useAxios';
-import AlbumList from '../AlbumList';
-import { useParams } from 'react-router';
-import data from '../data';
-import { useState, useEffect } from 'react';
+import { useAxios } from "../../hooks/useAxios";
+import AlbumList from "../AlbumList";
+import { useParams } from "react-router";
+import { useState, useEffect } from "react";
 // error page for any random string for genretype
 // error status from backend?
 
 export default function Language() {
   const { language } = useParams();
   let [albums, setAlbums] = useState([]);
-  const { data, error } = useAxios(`/albums/language/${language}`, 'GET');
+  const { data, error } = useAxios(`/albums/language/${language}`, "GET");
 
   useEffect(() => {
-      if (data) {
+    if (data) {
       let sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
       setAlbums(sortedData);
     }
@@ -22,10 +21,10 @@ export default function Language() {
 
   return (
     // <div className="my-4 p-2">
-    <div className='pt-10 pb-10 bg-[#DEE4E799] dark:bg-[#202124] min-h-[100vh] px-10'>
+    <div className="pt-10 pb-10 bg-[#DEE4E799] dark:bg-[#202124] min-h-[100vh] px-10">
       {error ? <div>{error.response.data}</div> : null}
       <>
-        <h2 className='ml-3 text-6xl font-bold leading-none'>
+        <h2 className="ml-3 text-6xl font-bold leading-none">
           {language.toUpperCase()}
         </h2>
         {albums ? <AlbumList albums={albums} /> : null}
