@@ -2,7 +2,7 @@ import "./App.css";
 import Navbar from "./components/header/header.jsx";
 import Allalbums from "./components/Albums/albums";
 import Home from "./components/Home/home";
-import Language from "./components/Language/Language"
+import Language from "./components/Language/Language";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Music from "./components/Music/Music";
 import ScrollToTop from "./components/ErrorPage/scroll";
@@ -12,6 +12,8 @@ import Cart from "./components/Cart/Cart";
 import Wishlist from "./components/Wishlist/Wishlist";
 import Contactus from "./components/contactus/contactus";
 import Footer from "./components/footer/footer.jsx";
+import Login from "./components/Authentication/login";
+import SignUp from "./components/Authentication/signup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -31,6 +33,8 @@ function App() {
             <Route path="/music/:id" element={<Music />}></Route>
             <Route path="/wishlist" element={<Wishlist />}></Route>
             <Route path="/searchError" element={<Invalidsearch />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </div>
