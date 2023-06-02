@@ -3,63 +3,6 @@ import Card from "./card";
 import Carousel from "./Carousel";
 import { useAxios } from "../../../hooks/useAxios";
 
-// let cards = [
-//   {
-//     key: uuidv4(),
-//     content: (
-//       <Card
-//         imagen="https://static.theprint.in/wp-content/uploads/2022/06/PUNJABI-SONGS.jpg"
-//         music="Punjabi"
-//       />
-//     ),
-//   },
-//   {
-//     key: uuidv4(),
-//     content: (
-//       <Card
-//         imagen="https://static.theprint.in/wp-content/uploads/2022/06/PUNJABI-SONGS.jpg"
-//         music="Punjabi"
-//       />
-//     ),
-//   },
-//   {
-//     key: uuidv4(),
-//     content: (
-//       <Card
-//         imagen="https://static.theprint.in/wp-content/uploads/2022/06/PUNJABI-SONGS.jpg"
-//         music="Punjabi"
-//       />
-//     ),
-//   },
-//   {
-//     key: uuidv4(),
-//     content: (
-//       <Card
-//         imagen="https://static.theprint.in/wp-content/uploads/2022/06/PUNJABI-SONGS.jpg"
-//         music="Punjabi"
-//       />
-//     ),
-//   },
-//   {
-//     key: uuidv4(),
-//     content: (
-//       <Card
-//         imagen="https://static.theprint.in/wp-content/uploads/2022/06/PUNJABI-SONGS.jpg"
-//         music="Punjabi"
-//       />
-//     ),
-//   },
-//   {
-//     key: uuidv4(),
-//     content: (
-//       <Card
-//         imagen="https://static.theprint.in/wp-content/uploads/2022/06/PUNJABI-SONGS.jpg"
-//         music="Punjabi"
-//       />
-//     ),
-//   },
-// ];
-
 export default function Carouselcomp() {
   const { data, error } = useAxios("/albums/data/filter", "GET");
   console.log("In carrousel comp", data);
@@ -68,7 +11,7 @@ export default function Carouselcomp() {
     <div className="">
       {data ? (
         <Carousel
-          cards={data[0].languages.map((item) => {
+          cards={data[0].languages.slice(0, 6).map((item) => {
             return {
               key: uuidv4(),
               content: <Card imagen={item.img} music={item.name} />,
