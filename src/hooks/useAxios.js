@@ -1,30 +1,33 @@
-import { useEffect, useState } from 'react';
-import axiosAPI from '../axios';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import axiosAPI from "../axios";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const useAxios = (url, method, config = {}) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const token = useSelector((state) => state.tokenData.token);
   const navigate = useNavigate();
   const headers = {
     "Content-Type": "application/json",
-  }
+    "x-access-token": token,
+  };
   // console.log('in useAxios');
 
   useEffect(() => {
-    console.log('in useEffect', url);
+    console.log("in useEffect", url);
 
     const getAPIData = async () => {
       try {
         let res;
         // console.log('testing method', method);
 
-        if (method === 'GET') {
+        if (method === "GET") {
           // console.log('in get method 1');
-          res = await axiosAPI.get(url);
+          res = await axiosAPI.get(url, { headers });
           // console.log('in get method 2', res);
         } else {
-          res = await axiosAPI.post(url, config, {headers} );
+          res = await axiosAPI.post(url, config, { headers });
         }
         // console.log('in useaxiosAPI', res.data, url);
         setData(res.data);
@@ -33,13 +36,9 @@ export const useAxios = (url, method, config = {}) => {
         // console.log("This is error.response.data",error.response.data);
         // console.log("This is error.response.status",error.response.status);
         if (error.response.status === 404) {
-          navigate('/searchError');
-          return;
-        } else {
-          navigate('/searchError');
+          navigate("/searchError");
           return;
         }
-
         setError(error);
       }
     };
@@ -48,7 +47,7 @@ export const useAxios = (url, method, config = {}) => {
     getAPIData();
   }, [url, method]);
 
-// config in dependency will give infinte loop bcoz it is not a primitive data type
-// solution: see in project => useCallback and another
+  // config in dependency will give infinte loop bcoz it is not a primitive data type
+  // solution: see in project => useCallback and another
   return { data, error };
 };

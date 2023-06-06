@@ -10,7 +10,7 @@ const animatedComponents = makeAnimated();
 export default function Allalbums() {
   const [category, setCategory] = useState([]);
   const [artist, setArtist] = useState([]);
-  const [range, setRange] = useState({ min: 0, max: 1000 });
+  const [range, setRange] = useState({ min: 100, max: 999 });
   const { data: filterdata, error } = useAxios("/albums/data/filter", "GET");
   const { data, error: error2 } = useAxios("/albums/all", "GET");
   const [dataa, setData] = useState(data ? data : null);
@@ -147,8 +147,8 @@ export default function Allalbums() {
               thumbClassName="bg-black text-white rounded-full p-1"
               trackClassName="example-track"
               min={100}
-              max={1000}
-              defaultValue={[100, 1000]}
+              max={999}
+              defaultValue={[100, 999]}
               ariaLabel={["Lower thumb", "Upper thumb"]}
               ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
               renderThumb={(props, state) => (
