@@ -12,10 +12,10 @@ export default function Invalidsearch() {
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-20 xl:py-40">
         <div className="w-full font-mono flex flex-col items-center relative z-10">
           <h1 className="font-extrabold text-2xl md:text-5xl text-center text-white leading-tight mt-4">
-            Invalid Search Request
+            Server Error
           </h1>
           <p className="font-extrabold text-8xl mt-44 text-white animate-bounce">
-            403
+            500
           </p>
           <Link to="/">
             <div className="bg-green-400  px-5 py-3 text-sm shadow-sm font-medium tracking-wider text-gray-50 rounded-full hover:shadow-lg">
