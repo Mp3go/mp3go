@@ -12,6 +12,7 @@ export const userToken = createSlice({
       state.token = action.payload;
     },
     removeToken: (state) => {
+      localStorage.setItem("token","")
       state.token = "";
     },
   },

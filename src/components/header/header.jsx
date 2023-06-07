@@ -7,6 +7,8 @@ import Dropdown from "./dropit";
 import { BsHeart, BsCartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { removeToken } from "../../redux/token";
+import { useNavigate } from "react-router-dom";
 
 import ToggleButton from "../toggle-button/togglebutton";
 
@@ -21,6 +23,13 @@ function classNames(...classes) {
 
 export default function Example() {
   const tokenValue = useSelector((state) => state.tokenData.token);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function logoutUser() {
+    dispatch(removeToken());
+    navigate("/");
+  }
   return (
     <Disclosure as="nav" className="bg-gray-800 dark:bg-black">
       {({ open }) => (
@@ -124,14 +133,15 @@ export default function Example() {
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <a
+                              <div
+                                onClick={logoutUser}
                                 href="#"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}>
                                 Sign out
-                              </a>
+                              </div>
                             )}
                           </Menu.Item>
                         </>
