@@ -24,7 +24,7 @@ export default function Cart() {
   };
 
   return (
-    <div className="bg-[#DEE4E799] dark:bg-[#202124]">
+    <div className="bg-[#DEE4E799] dark:bg-[#202124] min-h-[90vh]">
       <div className="flex flex-col justify-start pl-5 py-10">
         <h2 className="text-5xl font-black leading-10 pt-3 sm:ml-2 lg:ml-28">
           Mp3go Cart
@@ -48,9 +48,7 @@ export default function Cart() {
           </div>
 
           {/* Summary */}
-          {data ? (
-            <CartSummary data={data} removeCartItem={removeCartItem} />
-          ) : null}
+          {data ? <CartSummary data={data} /> : null}
         </div>
 
         {/* Back link */}

@@ -31,9 +31,9 @@ export default function CartCard({ data, removeCartItem }) {
           />
         </div>
         <div className="md:pl-3 md:w-3/4">
-          <p className="text-xs leading-3  md:pt-0 pt-4">{data.product._id}</p>
+          <p className="text-xs leading-3  md:pt-0 pt-4">{data.product.name}</p>
           <div className="flex items-center justify-between w-full pt-1">
-            <p className="text-base font-black leading-none ">
+            <p className="font-black leading-none text-5xl">
               {data.product._name}
             </p>
             {/* <select className='py-2 px-1 border border-gray-200 mr-6 focus:outline-none'>
@@ -64,10 +64,10 @@ export default function CartCard({ data, removeCartItem }) {
             </div>
           </div>
           <p className="text-xs leading-3  pt-2">
-            Language:{data.product.language}
+            Language: {data.product.language}
           </p>
           <p className="text-xs leading-3  py-4">
-            Artist:{data.product.artist}
+            Artist: {data.product.artist}
           </p>
           <div className="flex items-center justify-between pt-5 pr-6">
             <div className="flex itemms-center">
@@ -81,7 +81,7 @@ export default function CartCard({ data, removeCartItem }) {
               </p>
             </div>
             <p className="text-base font-black leading-none ">
-              {data.product.price}
+              {data.product.price * data.qty}
             </p>
           </div>
         </div>

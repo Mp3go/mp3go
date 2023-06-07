@@ -9,6 +9,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const { handleLogin } = useLogin();
   const navigate = useNavigate();
+  var error = "";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ export default function Login() {
       toast.success(data.message);
     } else {
       if (data) {
+        error = "Wrong Username or Password";
         toast.warning(data.message);
       }
     }
@@ -37,7 +39,7 @@ export default function Login() {
             <h2 className="font-bold text-2xl text-[#002D74] dark:text-white">
               Login
             </h2>
-
+            {error ? <div>Wrong User Id or Password</div> : null}
             <form
               onSubmit={(e) => handleSubmit(e)}
               className="flex flex-col gap-4 dark:text-black"

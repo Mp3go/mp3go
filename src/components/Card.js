@@ -4,34 +4,76 @@ import { useLocation } from "react-router";
 import { Ripple, initTE } from "tw-elements";
 import { ToastContainer, toast } from "react-toastify";
 import { useAxios } from "../hooks/useAxios";
+import { useDispatch, useSelector } from "react-redux";
+import { addWishlistItems } from "../redux/userWishlit";
+import { addCartItems } from "../redux/usercart";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 initTE({ Ripple });
 
 export default function Card({ image, title, price, id, artist }) {
   let location = useLocation();
   const isWishlistPage = location.pathname === "/wishlist";
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.tokenData.token);
+  const navigate = useNavigate();
 
-  // function addtoWishlist(){
-  //   const {data, error} = useAxios('/user/wishlist', "POST", {albumId: id})
-  //   if(error){
-  //     toast.warning(error.message);
-  //   }else{
-  //     toast.success("Item added to Wishlist ");
-  //     <Navigate to="/wishlist" />
-  //   }
-  // }
+  const addtoWishlist = async function () {
+    try {
+      let res = await axios.post(
+        "http://localhost:3001/user/wishlist",
+        {
+          albumId: id,
+        },
+        {
+          headers: {
+            "x-access-token": token,
+          },
+        }
+      );
+      dispatch(addWishlistItems(res.data));
+      navigate("/wishlist");
+    } catch (err) {
+      console.log("error Found");
+    }
+  };
 
-  // function addtoCart(){
-  //   const {data, error} = useAxios('/user/cart', "POST", {albumId: id})
-  //   if(error){
-  //     toast.warning(error.message);
-  //   }else{
-  //     toast.success("Item successfully added to cart ");
-  //     <Navigate to="/cart" />
-  //   }
-  // }
+  const addtoCart = async function () {
+    try {
+      let res = await axios.post(
+        "http://localhost:3001/user/cart",
+        {
+          albumId: id,
+        },
+        {
+          headers: {
+            "x-access-token": token,
+          },
+        }
+      );
+      dispatch(addCartItems(res.data));
+      navigate("/cart");
+    } catch (err) {
+      console.log("error Found");
+    }
+  };
 
-  function removeWishlistItem() {}
+  const removeWishlistItem = async function () {
+    try {
+      const res = await axios.delete("http://localhost:3001/user/wishlist", {
+        headers: {
+          "x-access-token": token,
+        },
+        data: {
+          albumId: id,
+        },
+      });
+      dispatch(addWishlistItems(res.data));
+    } catch (Err) {
+      console.log(Err);
+    }
+  };
 
   return (
     <div className="rounded-lg overflow-hidden shadow-lg h-80 md:h-96 max-w-sm transition ease-in-out delay-150 hover:scale-105 duration-300 dark:bg-black bg-white">
@@ -46,7 +88,9 @@ export default function Card({ image, title, price, id, artist }) {
         <div className="font-bold text-xl mb-2">Rs {price}</div>
         <div className="flex justify-between">
           {!isWishlistPage && (
-            <button className="text-white rounded-md md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black dark:bg-[#20212499]">
+            <button
+              onClick={() => addtoWishlist()}
+              className="text-white rounded-md md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black dark:bg-[#20212499]">
               Wishlist
             </button>
           )}
@@ -57,7 +101,9 @@ export default function Card({ image, title, price, id, artist }) {
               Remove
             </button>
           )}
-          <button className="text-white rounded-md md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black  dark:bg-[#20212499]">
+          <button
+            className="text-white rounded-md md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black  dark:bg-[#20212499]"
+            onClick={addtoCart}>
             Add to Cart
           </button>
         </div>
