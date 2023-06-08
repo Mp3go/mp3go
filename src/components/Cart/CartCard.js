@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { useWishlist } from "../../hooks/useWishlist";
 
 //Todo: Counter function for a particular cartID and not all
 export default function CartCard({ data, removeCartItem }) {
   const [counter, setCounter] = useState(1);
-
   const [subTotal, setSubTotal] = useState();
+  const {addToWishlist} = useWishlist();
+  
+  const handleAddToWishlist = () => {
+    addToWishlist(data.product._id);
+  };
 
   const incCounter = () => {
     if (counter < 10) {
@@ -71,7 +76,7 @@ export default function CartCard({ data, removeCartItem }) {
           </p>
           <div className="flex items-center justify-between pt-5 pr-6">
             <div className="flex itemms-center">
-              <p className="text-xs font-medium leading-3  cursor-pointer">
+              <p onClick={handleAddToWishlist} className="text-xs font-medium leading-3  cursor-pointer">
                 Add to Wishlist
               </p>
               <p
