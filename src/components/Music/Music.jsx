@@ -4,11 +4,13 @@ import { BsHeartFill, BsCartFill } from "react-icons/bs";
 import { useAxios } from "../../hooks/useAxios";
 import FeaturedAlbums from "../Home/Main/FeaturedAlbums";
 import { useWishlist } from "../../hooks/useWishlist";
+import { useCart } from "../../hooks/useCart";
 
 export default function Music() {
   const { id } = useParams();
   const { data, error } = useAxios(`/albums/${id}`, "GET");
   const {addToWishlist} = useWishlist();
+  const {addtoCart} = useCart();
   
   return (
     <>
@@ -49,7 +51,7 @@ export default function Music() {
                     <BsHeartFill />
                   </div>
                 </button>
-                <button className="flex-1 flex justify-center rounded-full items-center rounded-lg text-white md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full p-[0.8rem] md:p-[1rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
+                <button onClick={() => addtoCart(id)} className="flex-1 flex justify-center rounded-full items-center rounded-lg text-white md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full p-[0.8rem] md:p-[1rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
                   <div className="px-2">Add to Cart</div>
                   <BsCartFill />
                 </button>
