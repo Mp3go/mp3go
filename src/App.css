@@ -56,7 +56,10 @@
   background: #040213c8 !important;
 }
 .Toastify__toast--error {
-  background: #FCA7A9 !important;
+  background: #eb1c2097 !important;
+}
+.Toastify__toast--warning{
+  background: #040213c8 !important;
 }
 .toastBody {
   font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
@@ -64,5 +67,5 @@
   font-size: 0.875rem !important;
 }
 .toastProgress {
-  background: #333F48 !important;
+  background: #000204 !important;
 }
