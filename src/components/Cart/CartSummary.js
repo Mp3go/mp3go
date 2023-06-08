@@ -1,8 +1,55 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 export default function CartSummary({ data }) {
-  const [subTotal, setSubTotal] = useState(0);
+  const [subTotal, setSubTotal] = useState(data.total);
+  const token = useSelector((state) => state.tokenData.token);
 
+  const initPayment = async (datas) => {
+    const options = {
+      key: "rzp_test_Uf5FHFWB4CojuG",
+      amount: datas.amount,
+      currency: datas.currency,
+      name: "Your Cart",
+      description: "Albums Payment",
+      order_id: datas.id,
+      handler: async (response) => {
+        try {
+          console.log(response);
+          const verifyUrl = "http://localhost:3001/payment/verify";
+          const { data } = await axios.post(verifyUrl, response, {
+            headers: {
+              "x-access-token": token,
+            },
+          });
+          console.log(data);
+        } catch (error) {}
+      },
+    };
+
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  };
+
+  const handlePayment = async () => {
+    try {
+      const checoutUrl = "http://localhost:3001/payment/checkout";
+
+      const { data } = await axios.post(
+        checoutUrl,
+        { data: "data" },
+        {
+          headers: {
+            "x-access-token": token,
+          },
+        }
+      );
+      initPayment(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="md:w-1/4 xl:w-1/4 w-full bg-gray-900 bg-opacity-10 dark:bg-[#303134] h-full">
       <div className="flex flex-col md:h-screen px-14 py-20 justify-between overflow-y-auto">
@@ -29,7 +76,9 @@ export default function CartSummary({ data }) {
               Rs. {data.total + 35}
             </p>
           </div>
-          <button className="text-base leading-none w-full py-5 bg-black  border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
+          <button
+            onClick={handlePayment}
+            className="text-base leading-none w-full py-5 bg-black  border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
             Checkout
           </button>
         </div>
