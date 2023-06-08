@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axiosAPI from "../../axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SignUp() {
   const [email, setEmail] = useState();
@@ -7,7 +10,7 @@ export default function SignUp() {
   const [phnNumber, setPhnNumber] = useState();
   const [password, setPassword] = useState();
   const [gender, setGender] = useState();
-  const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate()
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -16,6 +19,8 @@ export default function SignUp() {
       username: name,
       email: email,
       password: password,
+      gender: gender,
+      phone: phnNumber
     };
 
     try {
@@ -24,13 +29,17 @@ export default function SignUp() {
           "Content-Type": "application/json",
         },
       });
-      console.log("in signin res", res);
-      const data = res ? await res.json() : null;
-      console.log("in signin res", data);
-      // setErrorMessage(data.message);
+      const data = res ? await res.data : null;
+      console.log(data);
+      toast.success(data);
+      navigate("/login");
     } catch (err) {
-      // setErrorMessage(err);
-      console.log(err);
+      if(err.response.status == 409){
+        console.log("before toast",err.response.data)
+        toast.error(err.response.data);
+        console.log("after toast")
+      }
+      console.log(err)
     }
   }
 
@@ -100,7 +109,7 @@ export default function SignUp() {
                 className="p-2 rounded-xl border">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Trans">Trans</option>
+                <option value="Trans">Other</option>
               </select>
 
               <button className="bg-[#002D74] dark:bg-[#20212499] rounded-xl text-white py-2 hover:scale-105 duration-300">
@@ -117,6 +126,7 @@ export default function SignUp() {
           </div>
         </div>
       </section>
+      
     </div>
   );
 }
