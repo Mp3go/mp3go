@@ -3,10 +3,13 @@ import { useParams } from "react-router-dom";
 import { BsHeartFill, BsCartFill } from "react-icons/bs";
 import { useAxios } from "../../hooks/useAxios";
 import FeaturedAlbums from "../Home/Main/FeaturedAlbums";
+import { useWishlist } from "../../hooks/useWishlist";
 
 export default function Music() {
   const { id } = useParams();
   const { data, error } = useAxios(`/albums/${id}`, "GET");
+  const {addToWishlist} = useWishlist();
+  
   return (
     <>
       {error ? <div>{error.response.data}</div> : null}
@@ -41,7 +44,7 @@ export default function Music() {
             <div className="flex-1 flex flex-col justify-end">
               <div className="flex flex-col md:flex-row md:mt-5 justify-between justify-self-end">
                 <button className="flex-1 flex justify-center rounded-full items-center rounded-lg text-white md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full p-[.8rem] md:p-[1rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
-                  <div className="px-2">Wishlist</div>
+                  <div onClick={() => addToWishlist(id)} className="px-2">Wishlist</div>
                   <div>
                     <BsHeartFill />
                   </div>

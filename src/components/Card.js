@@ -9,6 +9,8 @@ import { addWishlistItems } from "../redux/userWishlit";
 import { addCartItems } from "../redux/usercart";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useWishlist } from "../hooks/useWishlist";
+import { useCart } from "../hooks/useCart";
 
 initTE({ Ripple });
 
@@ -18,48 +20,10 @@ export default function Card({ image, title, price, id, artist }) {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.tokenData.token);
   const navigate = useNavigate();
+  const {addToWishlist} = useWishlist();
+  const {addtoCart} = useCart();
 
-  const addtoWishlist = async function () {
-    try {
-      let res = await axios.post(
-        "http://localhost:3001/user/wishlist",
-        {
-          albumId: id,
-        },
-        {
-          headers: {
-            "x-access-token": token,
-          },
-        }
-      );
-      dispatch(addWishlistItems(res.data));
-      navigate("/wishlist");
-    } catch (err) {
-      console.log("error Found");
-    }
-  };
-
-  const addtoCart = async function () {
-    try {
-      let res = await axios.post(
-        "http://localhost:3001/user/cart",
-        {
-          albumId: id,
-        },
-        {
-          headers: {
-            "x-access-token": token,
-          },
-        }
-      );
-      dispatch(addCartItems(res.data));
-      navigate("/cart");
-    } catch (err) {
-      console.log("error Found");
-    }
-  };
-
-  const removeWishlistItem = async function () {
+  const removeWishlistItem = async function (id) {
     try {
       const res = await axios.delete("http://localhost:3001/user/wishlist", {
         headers: {
@@ -89,21 +53,21 @@ export default function Card({ image, title, price, id, artist }) {
         <div className="flex justify-between">
           {!isWishlistPage && (
             <button
-              onClick={() => addtoWishlist()}
+              onClick={() => addToWishlist(id)}
               className="text-white rounded-md md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black dark:bg-[#20212499]">
               Wishlist
             </button>
           )}
           {isWishlistPage && (
             <button
-              onClick={() => removeWishlistItem()}
+              onClick={() => removeWishlistItem(id)}
               className="text-white rounded-md md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black dark:bg-[#20212499]">
               Remove
             </button>
           )}
           <button
             className="text-white rounded-md md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black  dark:bg-[#20212499]"
-            onClick={addtoCart}>
+            onClick={() => addtoCart(id)}>
             Add to Cart
           </button>
         </div>
