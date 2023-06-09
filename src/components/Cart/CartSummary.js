@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 
 export default function CartSummary({ data }) {
+  const Navigate = useNavigate();
   const [subTotal, setSubTotal] = useState(data.total);
   const token = useSelector((state) => state.tokenData.token);
 
@@ -24,6 +27,7 @@ export default function CartSummary({ data }) {
             },
           });
           console.log(data);
+          Navigate("/profile");
         } catch (error) {}
       },
     };

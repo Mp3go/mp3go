@@ -14,6 +14,7 @@ import Contactus from "./components/contactus/contactus";
 import Footer from "./components/footer/footer.jsx";
 import Login from "./components/Authentication/login";
 import SignUp from "./components/Authentication/signup";
+import UserProfile from "./components/User Profile/user";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/searchError" element={<Invalidsearch />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/profile" element={<UserProfile />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         </div>
