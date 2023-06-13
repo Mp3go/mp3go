@@ -16,10 +16,11 @@ export default function Login() {
     // console.log(email, password);
     const data2 = handleLogin(email, password);
     let data = await data2;
+    console.log(data);
     if (data && data.status === 200) {
       // console.log("in if in handle submit");
+      toast.success("Welcome To Mp3 Go");
       navigate("/");
-      toast.success(data.message);
     } else {
       if (data) {
         error = "Wrong Username or Password";
@@ -30,12 +31,12 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center p-5">
-      <p className="text-5xl pt-[20px] pb-[50px] font-bold font-sans text-[#002D74] dark:text-white">
+      <p className="text-center text-xl leading-6 sm:text-3xl md:text-4xl lg:text-5xl pt-[20px] pb-[50px] font-bold font-sans text-[#002D74] dark:text-white">
         Reconnect with Your Musical Paradise - Log In Now!
       </p>
-      <section className="items-center rounded-2xl justify-center  p-8">
+      <section className="items-center rounded-2xl justify-center p-4 md:p-8">
         <div className="bg-gray-100 dark:bg-black flex rounded-2xl shadow-lg max-w-3xl items-center dark:text-white p-4 min-h-[55vh]">
-          <div className="md:w-1/2 px-8 md:px-16">
+          <div className="w-full md:w-1/2 px-8 md:px-16">
             <h2 className="font-bold text-2xl text-[#002D74] dark:text-white">
               Login
             </h2>
@@ -46,7 +47,7 @@ export default function Login() {
               autoComplete="none">
               <input
                 required
-                className="p-2 mt-8 rounded-xl border"
+                className="p-2 mt-8 rounded-xl border w-full"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -63,7 +64,7 @@ export default function Login() {
                   value={password}
                 />
               </div>
-              <button className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
+              <button className="px-5 bg-[#002D74] dark:bg-[#20212499] rounded-xl text-white py-2 hover:scale-105 duration-300">
                 Login
               </button>
             </form>
@@ -74,10 +75,12 @@ export default function Login() {
               <hr className="border-gray-400" />
             </div>
 
-            <div className="mt-3 text-xs flex justify-between items-center text-[#002D74]">
-              <p>Don't have an account?</p>
+            <div className="mt-3 text-xs flex flex-col md:flex-row justify-between items-center text-[#002D74] w-full">
+              <p className="dark:text-white mb-5 md:mb-0">
+                Don't have an account?
+              </p>
               <Link to="/signup">
-                <button className="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">
+                <button className="px-5 w-full bg-[#002D74] dark:bg-[#20212499] rounded-xl text-white py-2 hover:scale-105 duration-300">
                   Register
                 </button>
               </Link>

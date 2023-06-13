@@ -14,7 +14,7 @@ function Card({ imagen, music }) {
   });
   return (
     <animated.div
-      className="flex flex-col justify-center w-[20rem] h-[100%] rounded-[10px] object-none"
+      className="flex flex-col justify-center w-[12rem] sm:w-[20rem] h-[70%] sm:h-[100%] rounded-[10px] object-none"
       style={props3}
       onMouseEnter={() => setShown(true)}
       onMouseLeave={() => setShown(false)}>

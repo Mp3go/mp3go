@@ -2,13 +2,19 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import SearchInput from "../search/SearchInput";
+import SearchInput from "./search/SearchInput";
 import Dropdown from "./dropit";
 import { BsHeart, BsCartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeToken } from "../../redux/token";
+import { removeWishlistItems } from "../../redux/userWishlit";
+import { removeCartItems } from "../../redux/usercart";
 import { useNavigate } from "react-router-dom";
+import { useAxios } from "../../hooks/useAxios";
+import { addWishlistItems } from "../../redux/userWishlit";
+import { addCartItems } from "../../redux/usercart";
+import { useEffect } from "react";
 
 import ToggleButton from "../toggle-button/togglebutton";
 
@@ -23,13 +29,26 @@ function classNames(...classes) {
 
 export default function Example() {
   const tokenValue = useSelector((state) => state.tokenData.token);
+  const { data: value, error } = useAxios("/user/cart", "GET");
+  const { data: value2, error: error2 } = useAxios("/user/wishlist", "GET");
+
+  useEffect(() => {
+    dispatch(addWishlistItems(value2));
+    dispatch(addCartItems(value));
+  }, [value, value2, error, error2]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const wishlist = useSelector((state) => state.userWishlist.userWishlist);
+  const userCart = useSelector((state) => state.userCart.userCart);
+
   function logoutUser() {
     dispatch(removeToken());
+    dispatch(removeCartItems());
+    dispatch(removeWishlistItems());
     navigate("/");
   }
+  console.log("Cloudinary", process.env.REACT_APP_CLOUDINARY);
   return (
     <Disclosure as="nav" className="bg-gray-800 dark:bg-black">
       {({ open }) => (
@@ -91,10 +110,33 @@ export default function Example() {
                     <ToggleButton />
                   </div>
                   <Link to="/wishlist">
-                    <BsHeart />
+                    <div className="flex flex-row">
+                      <BsHeart />
+                      <sup>
+                        (
+                        {wishlist
+                          ? wishlist.length > 0
+                            ? wishlist.length
+                            : 0
+                          : 0}
+                        )
+                      </sup>
+                    </div>
                   </Link>
+
                   <Link to="/cart">
-                    <BsCartFill />
+                    <div className="flex flex-row">
+                      <BsCartFill />
+                      <sup>
+                        (
+                        {userCart
+                          ? Object.keys(userCart).length
+                            ? userCart.items.length
+                            : 0
+                          : 0}
+                        )
+                      </sup>
+                    </div>
                   </Link>
                 </div>
                 <Menu as="div" className="relative ml-3">
@@ -103,7 +145,7 @@ export default function Example() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src="https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg"
                         alt=""
                       />
                     </Menu.Button>

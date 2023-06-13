@@ -20,21 +20,18 @@ export default function Wishlist() {
       <p className="ml-5 text-2xl font-bold leading-none">My Wishlist</p>
       {error
         ? error.response.status == 409
-          ? "Please Add Items to your Cart"
-          : null
-        : null}
-      {error
-        ? error.response.status == 401
-          ? "Please Login First"
+          ? "Please Add Items to your Wishlist First"
           : null
         : null}
       {/* <AlbumList albums={wishlist} addToWishlist={addToWishlist} /> */}
       {data ? (
-        <AlbumList
-          albums={data.map((data) => {
-            return data.product;
-          })}
-        />
+        data.length > 0 ? (
+          <AlbumList
+            albums={data.map((data) => {
+              return data.product;
+            })}
+          />
+        ) : null
       ) : null}
     </div>
   );

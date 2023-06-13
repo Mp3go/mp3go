@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 export default function CartSummary({ data }) {
   const Navigate = useNavigate();
@@ -11,7 +12,7 @@ export default function CartSummary({ data }) {
 
   const initPayment = async (datas) => {
     const options = {
-      key: "rzp_test_Uf5FHFWB4CojuG",
+      key: process.env.REACT_APP_RAZORPAY,
       amount: datas.amount,
       currency: datas.currency,
       name: "Your Cart",
@@ -37,6 +38,10 @@ export default function CartSummary({ data }) {
   };
 
   const handlePayment = async () => {
+    if (data.cart_total == 0) {
+      toast.error("Please add items to Cart");
+      return;
+    }
     try {
       const checoutUrl = "http://localhost:3001/payment/checkout";
 
@@ -69,7 +74,9 @@ export default function CartSummary({ data }) {
           </div>
           <div className="flex items-center justify-between pt-5">
             <p className="text-base leading-none ">Tax</p>
-            <p className="text-base leading-none ">Rs.35</p>
+            <p className="text-base leading-none ">
+              Rs {data.total * (5 / 100)}
+            </p>
           </div>
         </div>
 
@@ -77,7 +84,7 @@ export default function CartSummary({ data }) {
           <div className="flex items-center pb-6 justify-between lg:pt-5 pt-2">
             <p className="text-2xl leading-normal ">Total</p>
             <p className="text-2xl font-bold leading-normal text-right ">
-              Rs. {data.total + 35}
+              Rs. {data.total + data.total * (5 / 100)}
             </p>
           </div>
           <button

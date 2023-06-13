@@ -18,7 +18,7 @@ export default function FeaturedAlbums() {
       </h1>
       <hr className="w-[25%] mx-auto" />
       {/* <AlbumList albums={featuredAlbums} /> */}
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 justify-center mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 justify-center mt-5">
         {data
           ? data.map((album) => (
               <Card

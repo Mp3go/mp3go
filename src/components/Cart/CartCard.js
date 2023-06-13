@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { useWishlist } from "../../hooks/useWishlist";
+import { useCart } from "../../hooks/useCart";
 
 //Todo: Counter function for a particular cartID and not all
-export default function CartCard({ data, removeCartItem }) {
+export default function CartCard({ data }) {
   const [counter, setCounter] = useState(1);
   const [subTotal, setSubTotal] = useState();
-  const {addToWishlist} = useWishlist();
-  
-  const handleAddToWishlist = () => {
-    addToWishlist(data.product._id);
-  };
+  const { addToWishlist } = useWishlist();
+  const { addtoCart } = useCart();
 
   const incCounter = () => {
     if (counter < 10) {
@@ -21,7 +19,7 @@ export default function CartCard({ data, removeCartItem }) {
     if (counter > 1) {
       setCounter(counter - 1);
     } else if (counter === 1) {
-      removeCartItem(data._id);
+      // removeCartItem(data._id);
     }
   };
 
@@ -50,7 +48,7 @@ export default function CartCard({ data, removeCartItem }) {
               <svg
                 className="fill-current w-3"
                 viewBox="0 0 448 512"
-                onClick={decCounter}>
+                onClick={() => addtoCart(data.product._id, "dqty")}>
                 <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
               </svg>
 
@@ -63,7 +61,7 @@ export default function CartCard({ data, removeCartItem }) {
               <svg
                 className="fill-current w-3"
                 viewBox="0 0 448 512"
-                onClick={incCounter}>
+                onClick={() => addtoCart(data.product._id, "iqty")}>
                 <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
               </svg>
             </div>
@@ -76,11 +74,13 @@ export default function CartCard({ data, removeCartItem }) {
           </p>
           <div className="flex items-center justify-between pt-5 pr-6">
             <div className="flex itemms-center">
-              <p onClick={handleAddToWishlist} className="text-xs font-medium leading-3  cursor-pointer">
+              <p
+                onClick={() => addToWishlist(data.product._id, "add")}
+                className="text-xs font-medium leading-3  cursor-pointer">
                 Add to Wishlist
               </p>
               <p
-                onClick={() => removeCartItem(data.product._id)}
+                onClick={() => addtoCart(data.product._id, "rem")}
                 className="text-xs leading-3 font-medium text-red-500 pl-5 cursor-pointer">
                 Remove
               </p>

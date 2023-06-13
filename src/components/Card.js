@@ -20,24 +20,24 @@ export default function Card({ image, title, price, id, artist }) {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.tokenData.token);
   const navigate = useNavigate();
-  const {addToWishlist} = useWishlist();
-  const {addtoCart} = useCart();
+  const { addToWishlist } = useWishlist();
+  const { addtoCart } = useCart();
 
-  const removeWishlistItem = async function (id) {
-    try {
-      const res = await axios.delete("http://localhost:3001/user/wishlist", {
-        headers: {
-          "x-access-token": token,
-        },
-        data: {
-          albumId: id,
-        },
-      });
-      dispatch(addWishlistItems(res.data));
-    } catch (Err) {
-      console.log(Err);
-    }
-  };
+  // const removeWishlistItem = async function (id) {
+  //   try {
+  //     const res = await axios.delete("http://localhost:3001/user/wishlist", {
+  //       headers: {
+  //         "x-access-token": token,
+  //       },
+  //       data: {
+  //         albumId: id,
+  //       },
+  //     });
+  //     dispatch(addWishlistItems(res.data));
+  //   } catch (Err) {
+  //     console.log(Err);
+  //   }
+  // };
 
   return (
     <div className="rounded-lg overflow-hidden shadow-lg h-80 md:h-96 max-w-sm transition ease-in-out delay-150 hover:scale-105 duration-300 dark:bg-black bg-white">
@@ -53,21 +53,21 @@ export default function Card({ image, title, price, id, artist }) {
         <div className="flex justify-between">
           {!isWishlistPage && (
             <button
-              onClick={() => addToWishlist(id)}
+              onClick={() => addToWishlist(id, "add")}
               className="text-white rounded-md md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black dark:bg-[#20212499]">
               Wishlist
             </button>
           )}
           {isWishlistPage && (
             <button
-              onClick={() => removeWishlistItem(id)}
+              onClick={() => addToWishlist(id, "rem")}
               className="text-white rounded-md md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black dark:bg-[#20212499]">
               Remove
             </button>
           )}
           <button
             className="text-white rounded-md md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full py-[0.4rem] md:py-[0.8rem] m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black  dark:bg-[#20212499]"
-            onClick={() => addtoCart(id)}>
+            onClick={() => addtoCart(id, "add")}>
             Add to Cart
           </button>
         </div>

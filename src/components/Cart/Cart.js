@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import CartCard from "./CartCard";
 import CartSummary from "./CartSummary";
 import { useAxios } from "../../hooks/useAxios";
-import data from "../data";
+import { useSelector, useDispatch } from "react-redux";
+import { addCartItems } from "../../redux/usercart";
 
 // When 'add to cart' button is clicked, data is passed from Card.js to database and retreived from db here.
 // On adding backend logic, we will write the complete code of adding, deleting and retrieving data
@@ -10,18 +11,18 @@ import data from "../data";
 // Todo: Add scrollbar?
 
 export default function Cart() {
-  const { data, error } = useAxios("/user/cart", "GET");
-  console.log(data);
-  const [cartItems, setCartItems] = useState(data);
-  let cartId;
+  var { data: value, error } = useAxios("/user/cart", "GET");
+  console.log("Value is", value);
+  const dispatch = useDispatch();
 
-  const removeCartItem = (cartId) => {
-    setCartItems(
-      cartItems.filter((item) => {
-        return item.cartId !== cartId;
-      })
-    );
-  };
+  useEffect(() => {
+    if (!error) {
+      dispatch(addCartItems(value));
+    }
+  }, [value, error]);
+
+  const data = useSelector((State) => State.userCart.userCart);
+  console.log(data);
 
   return (
     <div className="bg-[#DEE4E799] dark:bg-[#202124] min-h-[90vh]">
@@ -39,36 +40,24 @@ export default function Cart() {
             <CartCard removeCartItem={removeCartItem} item={item}></CartCard>
           ))} */}
             {data
-              ? data.items.map((card) => {
-                  return (
-                    <CartCard data={card} removeCartItem={removeCartItem} />
-                  );
-                })
+              ? Object.keys(data).length != 0
+                ? data.items.map((card) => {
+                    return <CartCard data={card} />;
+                  })
+                : null
               : null}
           </div>
 
           {/* Summary */}
-          {data ? <CartSummary data={data} /> : null}
+          {data ? (
+            // Object.keys(data).length != 0 ? (
+            <CartSummary data={data} />
+          ) : // ) : null
+          null}
+          {/* {data ? <CartSummary data={data} /> : null} */}
         </div>
 
         {/* Back link */}
-        <div className="flex items-center text-gray-500 hover:text-gray-600 dark:hover:text-white cursor-pointer sm:ml-2 lg:ml-28">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-chevron-left"
-            width={16}
-            height={16}
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <polyline points="15 6 9 12 15 18" />
-          </svg>
-          <p className="text-sm pl-2 leading-none">Back</p>
-        </div>
       </div>
     </div>
   );

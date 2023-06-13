@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import axiosAPI from "../axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const useAxios = (url, method, config = {}) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const token = useSelector((state) => state.tokenData.token);
+  const location = useLocation();
   const navigate = useNavigate();
   const headers = {
     "Content-Type": "application/json",
@@ -38,6 +41,14 @@ export const useAxios = (url, method, config = {}) => {
         if (error.response.status === 404) {
           navigate("/searchError");
           return;
+        } else if (
+          error.response.status === 401 &&
+          (location.pathname == "/cart" ||
+            location.pathname == "/wishlist" ||
+            location.pathname == "/profile")
+        ) {
+          toast.error("Please Login First");
+          navigate("/login");
         }
         setError(error);
       }

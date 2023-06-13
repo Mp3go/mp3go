@@ -24,7 +24,7 @@ export default function Language() {
     <div className="pt-10 pb-10 bg-[#DEE4E799] dark:bg-[#202124] min-h-[100vh] px-10">
       {error ? <div>{error.response.data}</div> : null}
       <>
-        <h2 className="ml-3 text-6xl font-bold leading-none">
+        <h2 className="ml-3 text-3xl sm:text-6xl font-bold leading-none text-center">
           {language.toUpperCase()}
         </h2>
         {albums ? <AlbumList albums={albums} /> : null}

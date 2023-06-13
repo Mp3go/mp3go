@@ -1,9 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { useAxios } from "../../hooks/useAxios";
 import axios from "axios";
-import { Filter } from "@mui/icons-material";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRef } from "react";

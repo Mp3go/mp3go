@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function Profile({ data }) {
   return (
-    <div className="w-full bg-gray-900 bg-opacity-10 dark:bg-[#303134] h-full">
+    <div className="w-full bg-gray-900 bg-opacity-10 dark:bg-[#303134]">
       <div className="flex flex-col md:h-screen px-14 py-20 justify-between overflow-y-auto">
         <div>
           <p className="text-4xl font-black leading-9 text-center">Profile</p>
@@ -13,9 +13,7 @@ export default function Profile({ data }) {
           />
           <div className="flex items-center pt-10">
             {/* <p className="text-base leading-none ">Name:&nbsp;</p> */}
-            <p className="text-base leading-none font-bold">
-              {data.name}Rachit Sharma
-            </p>
+            <p className="text-base leading-none font-bold">{data.name}</p>
           </div>
           <div className="flex items-center pt-5">
             {/* <p className="text-base leading-none ">Email:&nbsp;</p> */}
@@ -29,7 +27,9 @@ export default function Profile({ data }) {
 
         <div>
           <div className="flex items-center pb-6 justify-between lg:pt-5 pt-2">
-            <p className="text-2xl leading-normal font-bold">Total Orders: </p>
+            <p className="text-xl sm:text-2xl leading-normal font-bold">
+              Total Orders:{" "}
+            </p>
             <p className="text-2xl font-bold leading-normal text-right ">
               {data.orders.length}
             </p>

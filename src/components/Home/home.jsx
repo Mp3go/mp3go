@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "./Carousel/carouselcomplete";
 import FeaturedAlbums from "./Main/FeaturedAlbums";
 import NewReleases from "./Main/NewReleases";
-import Heading from "./Heading";
+import Heading from "./Main/Heading";
 import TestimonialsCarousel from "./Testimonials/testimonialsCarousel";
 
 export default function home() {

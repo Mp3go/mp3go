@@ -12,7 +12,7 @@ export const userWishlist = createSlice({
       state.userWishlist = action.payload;
     },
     removeWishlistItems: (state) => {
-      state.userWishlist = "";
+      state.userWishlist = {};
     },
   },
 });

@@ -1,7 +1,10 @@
 import { useState } from "react";
 import axiosAPI from "../axios";
 import { useSelector, useDispatch } from "react-redux";
-import { addToken, removeToken } from "../redux/token";
+import { addToken } from "../redux/token";
+import { addCartItems } from "../redux/usercart";
+import { addWishlistItems } from "../redux/userWishlit";
+import { toast } from "react-toastify";
 
 export const useLogin = () => {
   //   const [data, setData] = useState(null);
@@ -19,18 +22,16 @@ export const useLogin = () => {
       email: email,
       password: password,
     };
-    let res;
+    var res;
     try {
-      console.log("about to post");
       res = await axiosAPI.post("/login", user, { headers });
-      console.log("post data response", res);
-      //   setData(res);
-      console.log("In use login", res.data);
       localStorage.setItem("token", res.data.token);
+      console.log(res.data.user);
       dispatch(addToken(res.data.token));
-      //   setErrorMessage(data.message); //see again
+      dispatch(addCartItems(res.data.user.cart));
+      dispatch(addWishlistItems(res.data.user.wishlist.items));
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
       setErrorMessage(error);
     }
 
