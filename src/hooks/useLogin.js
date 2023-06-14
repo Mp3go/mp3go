@@ -17,7 +17,6 @@ export const useLogin = () => {
   };
 
   async function handleLogin(email, password) {
-    console.log("In handle login");
     const user = {
       email: email,
       password: password,
@@ -26,7 +25,6 @@ export const useLogin = () => {
     try {
       res = await axiosAPI.post("/login", user, { headers });
       localStorage.setItem("token", res.data.token);
-      console.log(res.data.user);
       dispatch(addToken(res.data.token));
       dispatch(addCartItems(res.data.user.cart));
       dispatch(addWishlistItems(res.data.user.wishlist.items));

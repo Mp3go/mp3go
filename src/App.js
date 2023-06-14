@@ -1,5 +1,5 @@
 import "./App.css";
-import Navbar from "./components/header/header.jsx";
+// import Navbar from "./components/header/header.jsx";
 import Allalbums from "./components/Albums/albums";
 import Home from "./components/Home/home";
 import Language from "./components/Language/Language";
@@ -15,14 +15,16 @@ import Footer from "./components/footer/footer.jsx";
 import Login from "./components/Authentication/login";
 import SignUp from "./components/Authentication/signup";
 import UserProfile from "./components/User Profile/user";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import Navbarnew from "./components/header/navbar";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
+        <Navbarnew />
         <div className="bg-[#DEE4E799] dark:text-white dark:bg-[#202124] p-0 m-0">
           <ScrollToTop />
           <Routes>

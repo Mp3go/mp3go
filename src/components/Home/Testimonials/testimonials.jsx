@@ -4,10 +4,10 @@ export default function Testimonials({ img, review, user }) {
   return (
     <section className="p-6">
       <div className="container max-w-4xl mx-auto">
-        <div class="max-w-screen-xl px-4 py-4 mx-auto text-center lg:py-16 lg:px-6">
-          <figure class="max-w-screen-md mx-auto">
+        <div className="max-w-screen-xl px-4 py-4 mx-auto text-center lg:py-16 lg:px-6">
+          <figure className="max-w-screen-md mx-auto">
             <svg
-              class="h-12 mx-auto mb-3 text-gray-400 dark:text-gray-600"
+              className="h-12 mx-auto mb-3 text-gray-400 dark:text-gray-600"
               viewBox="0 0 24 27"
               fill="none"
               xmlns="http://www.w3.org/2000/svg">
@@ -17,18 +17,18 @@ export default function Testimonials({ img, review, user }) {
               />
             </svg>
             <blockquote>
-              <p class="text-2xl font-medium text-gray-900 dark:text-white">
+              <p className="text-sm sm:text-lg md:text-2xl font-medium text-gray-900 dark:text-white">
                 {review}
               </p>
             </blockquote>
-            <figcaption class="flex items-center justify-center mt-6 space-x-3">
+            <figcaption className="flex items-center justify-center mt-6 space-x-3">
               <img
-                class="w-6 h-6 rounded-full"
+                className="w-6 h-6 rounded-full"
                 src={img}
                 alt="profile picture"
               />
-              <div class="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
-                <div class="pr-3 font-medium text-gray-900 dark:text-white">
+              <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
+                <div className="pr-3 font-medium text-gray-900 dark:text-white">
                   {user}
                 </div>
               </div>

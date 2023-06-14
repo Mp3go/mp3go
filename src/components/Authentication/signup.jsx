@@ -29,7 +29,8 @@ export default function SignUp() {
           imageURL = response.data.secure_url;
         })
         .catch((err) => {
-          console.log(err);
+          toast.error("Cloudinary Error");
+          return;
         });
     } catch (err) {
       toast.error("Error in Image Upload");
@@ -60,7 +61,7 @@ export default function SignUp() {
       if (err.response.status === 409) {
         toast.error(err.response.data);
       }
-      console.log(err);
+      toast.error("Issue in Sign Up");
     }
   }
 

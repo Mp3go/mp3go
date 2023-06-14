@@ -14,7 +14,6 @@ export default function Allalbums() {
   const { data: filterdata, error } = useAxios("/albums/data/filter", "GET");
   const { data, error: error2 } = useAxios("/albums/all", "GET");
   const [dataa, setData] = useState(data ? data : null);
-  console.log(data ? data.length : null);
   useEffect(() => {
     if (category.length && artist.length) {
       let result = data

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Nav } from "react-bootstrap";
 import { toast } from "react-toastify";
-
+import { useDispatch } from "react-redux";
+import { addCartItems } from "../../redux/usercart";
 export default function CartSummary({ data }) {
+  const dispatch = useDispatch();
   const Navigate = useNavigate();
-  const [subTotal, setSubTotal] = useState(data.total);
   const token = useSelector((state) => state.tokenData.token);
 
   const initPayment = async (datas) => {
@@ -20,14 +20,14 @@ export default function CartSummary({ data }) {
       order_id: datas.id,
       handler: async (response) => {
         try {
-          console.log(response);
-          const verifyUrl = "http://localhost:3001/payment/verify";
+          const verifyUrl = "https://mp3go-558d.onrender.com/payment/verify";
           const { data } = await axios.post(verifyUrl, response, {
             headers: {
               "x-access-token": token,
             },
           });
-          console.log(data);
+          console.log("Data after Verify", data);
+          dispatch(addCartItems(data));
           Navigate("/profile");
         } catch (error) {}
       },
@@ -37,17 +37,19 @@ export default function CartSummary({ data }) {
     rzp1.open();
   };
 
-  const handlePayment = async () => {
-    if (data.cart_total == 0) {
+  const handlePayment = async (value) => {
+    if (parseInt(value) === 0) {
       toast.error("Please add items to Cart");
       return;
     }
     try {
-      const checoutUrl = "http://localhost:3001/payment/checkout";
+      const checoutUrl = "https://mp3go-558d.onrender.com/payment/checkout";
 
-      const { data } = await axios.post(
+      var { data } = await axios.post(
         checoutUrl,
-        { data: "data" },
+        {
+          amount: value,
+        },
         {
           headers: {
             "x-access-token": token,
@@ -56,7 +58,8 @@ export default function CartSummary({ data }) {
       );
       initPayment(data.data);
     } catch (error) {
-      console.log(error);
+      toast.error("Error in Back-end");
+      return;
     }
   };
   return (
@@ -88,7 +91,7 @@ export default function CartSummary({ data }) {
             </p>
           </div>
           <button
-            onClick={handlePayment}
+            onClick={() => handlePayment(data.total)}
             className="text-base leading-none w-full py-5 bg-black  border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
             Checkout
           </button>

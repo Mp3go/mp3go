@@ -5,7 +5,6 @@ import { useAxios } from "../../../hooks/useAxios";
 
 export default function Carouselcomp() {
   const { data, error } = useAxios("/albums/data/filter", "GET");
-  console.log("In carrousel comp", data);
 
   return (
     <div className="">

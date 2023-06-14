@@ -13,12 +13,9 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(email, password);
     const data2 = handleLogin(email, password);
     let data = await data2;
-    console.log(data);
     if (data && data.status === 200) {
-      // console.log("in if in handle submit");
       toast.success("Welcome To Mp3 Go");
       navigate("/");
     } else {

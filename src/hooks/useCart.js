@@ -13,7 +13,7 @@ export const useCart = () => {
     try {
       if (action === "add") {
         let res = await axios.post(
-          "http://localhost:3001/user/cart",
+          "https://mp3go-558d.onrender.com/user/cart",
           {
             albumId: id,
           },
@@ -28,7 +28,7 @@ export const useCart = () => {
         navigate("/cart");
       } else if (action === "rem") {
         const res = await axios.delete(
-          "http://localhost:3001/user/cart-delete-item",
+          "https://mp3go-558d.onrender.com/user/cart-delete-item",
           {
             headers: {
               "x-access-token": token,
@@ -39,12 +39,11 @@ export const useCart = () => {
           }
         );
         toast.success("Item Removed From the Cart");
-        console.log(res.data);
         dispatch(addCartItems(res.data));
         navigate("/cart");
       } else if (action === "iqty") {
         let res = await axios.post(
-          "http://localhost:3001/user/cart/qty",
+          "https://mp3go-558d.onrender.com/user/cart/qty",
           {
             albumId: id,
             method: "increment",
@@ -56,12 +55,11 @@ export const useCart = () => {
           }
         );
         toast.success("Quantity Increased");
-        console.log(res.data);
         dispatch(addCartItems(res.data));
         navigate("/cart");
       } else if (action === "dqty") {
         let res = await axios.post(
-          "http://localhost:3001/user/cart/qty",
+          "https://mp3go-558d.onrender.com/user/cart/qty",
           {
             albumId: id,
             method: "decrement",
@@ -73,7 +71,6 @@ export const useCart = () => {
           }
         );
         toast.success("Quantity Decreased");
-        console.log(res.data);
         dispatch(addCartItems(res.data));
         navigate("/cart");
       }
@@ -83,7 +80,6 @@ export const useCart = () => {
       } else if (err.response.status === 409) {
         toast.error(err.response.data.message);
       }
-      console.log("error Found in useCart");
     }
   }
 

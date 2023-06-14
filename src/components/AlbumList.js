@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-export default function AlbumList({ albums, addToWishlist }) {
+export default function AlbumList({ albums }) {
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 justify-center mt-5">
@@ -13,7 +13,6 @@ export default function AlbumList({ albums, addToWishlist }) {
             price={album.price}
             title={album.name}
             artist={album.artist}
-            addToWishlist={addToWishlist}
           />
         ))}
       </div>

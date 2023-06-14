@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function OrderCard({ data }) {
-  console.log(data);
   return (
     <div>
       <div className="md:flex mt-2 py-8 border-t border-gray-400 dark:border-[#3c4043]">
@@ -9,7 +8,7 @@ export default function OrderCard({ data }) {
           <img
             src={data.checkoutOrder.items[0].product.img}
             alt
-            className="w-full rounded-sm pl-3 h-52 sm:h-50 md:h-40 object-cover object-center"
+            className="w-full rounded-sm  sm:pl-3 h-52 sm:h-50 md:h-40 object-cover object-center"
           />
         </div>
         <div className="flex flex-col justify-end md:pl-3 md:w-3/4">

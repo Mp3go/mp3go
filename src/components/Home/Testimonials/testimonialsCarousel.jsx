@@ -31,7 +31,7 @@ export default function TestimonialsCarousel() {
   return (
     <>
       <div className="pb-5">
-        <h1 class="text-5xl font-bold xl:block hidden leading-tight text-gray-800 dark:text-white text-center mt-[5rem]">
+        <h1 className="text-5xl font-bold xl:block hidden leading-tight text-gray-800 dark:text-white text-center mt-[5rem]">
           Music Lovers Speak: Testimonials from Our Happy Customers
         </h1>
         <Swiper

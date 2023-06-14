@@ -10,12 +10,11 @@ export const useWishlist = () => {
 
   async function addToWishlist(id) {
     try {
-      let res = await axios.post("http://localhost:3001/user/data", {
+      let res = await axios.post("https://mp3go-558d.onrender.com/user/data", {
         headers: {
           "x-access-token": token,
         },
       });
-      console.log("In User Data", res.data);
       navigate("/wishlist");
     } catch (err) {
       if (err.response.status === 409) {
@@ -23,7 +22,6 @@ export const useWishlist = () => {
       } else if (err.response.status === 401) {
         toast.error(err.response.data.message);
       }
-      // console.log('error Found in useWishlist', err);
     }
   }
 

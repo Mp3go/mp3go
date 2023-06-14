@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Ripple, initTE } from "tw-elements";
-import data from "../../data";
-import AlbumList from "../../AlbumList";
 import Card from "./card";
 import { useAxios } from "../../../hooks/useAxios";
 

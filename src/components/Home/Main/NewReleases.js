@@ -1,24 +1,15 @@
 import React, { useState } from "react";
 import Card from "./card";
-import data from "../../data";
-import axiosAPI from "../../../axios";
+
 import { Ripple, initTE } from "tw-elements";
-import AlbumList from "../../AlbumList";
-import { async } from "q";
-import { catchClause } from "@babel/types";
+
 import { useAxios } from "../../../hooks/useAxios";
 
 initTE({ Ripple });
 
 export default function NewReleases() {
-  // const {data, error} = useAxios('/albums/all', "GET");
-  // console.log(data);
-  // const getData = async () => {}
-  // const data = await axiosAPI.get("/albums/all");
   const { data, error } = useAxios("/albums/new-releases", "GET");
-  // console.log('In new releases', data);
 
-  // getData();
   return (
     <div className="mx-4 my-4 py-2 px-5">
       <h1 className="mt-10 mb-2 text-center font-sans capitalize text-5xl font-medium">

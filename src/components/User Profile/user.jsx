@@ -5,7 +5,6 @@ import Profile from "./Profile";
 
 export default function UserProfile() {
   const { data: userData, error } = useAxios("/user/data", "GET");
-  console.log(userData ? userData : null);
   //   const [uData, setuData] = useState(userData?);
   return (
     <div className="bg-[#DEE4E799] dark:bg-[#202124] min-h-[90vh] p-5">

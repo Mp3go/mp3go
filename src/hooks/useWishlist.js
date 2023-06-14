@@ -13,7 +13,7 @@ export const useWishlist = () => {
     try {
       if (action === "add") {
         let res = await axios.post(
-          "http://localhost:3001/user/wishlist",
+          "https://mp3go-558d.onrender.com/user/wishlist",
           {
             albumId: id,
           },
@@ -23,29 +23,28 @@ export const useWishlist = () => {
             },
           }
         );
-        console.log("In useWishlist", res.data);
         dispatch(addWishlistItems(res.data));
         toast.success("Item successfully added to wishlist");
         navigate("/wishlist");
       } else if (action === "rem") {
-        const res = await axios.delete("http://localhost:3001/user/wishlist", {
-          headers: {
-            "x-access-token": token,
-          },
-          data: {
-            albumId: id,
-          },
-        });
-        console.log(res);
+        const res = await axios.delete(
+          "https://mp3go-558d.onrender.com/user/wishlist",
+          {
+            headers: {
+              "x-access-token": token,
+            },
+            data: {
+              albumId: id,
+            },
+          }
+        );
         dispatch(addWishlistItems(res.data));
       }
     } catch (err) {
       if (err.response.status === 401) {
         navigate("/login");
         toast.warning(err.response.data.message);
-      }
-      // console.log('error Found in useWishlist', err);
-      else {
+      } else {
         toast.warning(err.response.data.message);
       }
     }

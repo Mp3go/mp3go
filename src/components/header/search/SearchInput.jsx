@@ -26,15 +26,12 @@ const SearchInput = (searchValue) => {
   }, []);
 
   async function DataChange(searchValue) {
-    // console.log(searchValue);
     if (searchValue.target.value === "") {
       setFilterData([]);
       setIsVisible(false);
     }
     const data = await axios.get("https://mp3go-558d.onrender.com/albums/all");
-    // console.log(data);
     const value = data.data.filter((a) => {
-      // console.log(a);
       if (
         a.name.toUpperCase().includes(searchValue.target.value.toUpperCase())
       ) {
@@ -54,11 +51,11 @@ const SearchInput = (searchValue) => {
     setIsVisible(false);
     setFilterData([]);
   }
-  console.log("Filter", FilterData);
+
   return (
     <div className="flex flex-col z-60">
-      <div className="relative cursor-text flex">
-        <span className="absolute inset-y-0 flex items-center left-2 pl-2">
+      <div className="relative cursor-text flex w-full">
+        <span className="absolute inset-y-0 flex items-center left-2 ">
           <FontAwesomeIcon className="text-slate-400 h-5" icon={faSearch} />
         </span>
         <input
@@ -66,11 +63,9 @@ const SearchInput = (searchValue) => {
             DataChange(e);
           }}
           className="py-3 px-10 
-        text-slate-500 
-        focus:outline-none 
-        outline-none 
-        rounded-md 
-        bg-slate-50
+        rounded-sm 
+        bg-slate-200
+        focus:outline-none
         dark:bg-slate-700 
         dark:text-slate-300"
           type="text"
@@ -110,7 +105,7 @@ const SearchInput = (searchValue) => {
         }
           @media (max-width: 388px) {
             input {
-              width: 40%;
+              width: 100%;
             }
           }
           @media (max-width: 640px) {

@@ -12,7 +12,6 @@ import { addCartItems } from "../../redux/usercart";
 
 export default function Cart() {
   var { data: value, error } = useAxios("/user/cart", "GET");
-  console.log("Value is", value);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +21,6 @@ export default function Cart() {
   }, [value, error]);
 
   const data = useSelector((State) => State.userCart.userCart);
-  console.log(data);
 
   return (
     <div className="bg-[#DEE4E799] dark:bg-[#202124] min-h-[90vh]">

@@ -15,29 +15,20 @@ export const useAxios = (url, method, config = {}) => {
     "Content-Type": "application/json",
     "x-access-token": token,
   };
-  // console.log('in useAxios');
 
   useEffect(() => {
-    console.log("in useEffect", url);
-
     const getAPIData = async () => {
       try {
         let res;
-        // console.log('testing method', method);
 
         if (method === "GET") {
-          // console.log('in get method 1');
           res = await axiosAPI.get(url, { headers });
-          // console.log('in get method 2', res);
         } else {
           res = await axiosAPI.post(url, config, { headers });
         }
-        // console.log('in useaxiosAPI', res.data, url);
+
         setData(res.data);
       } catch (error) {
-        // console.log("This is error.response", error.response);
-        // console.log("This is error.response.data",error.response.data);
-        // console.log("This is error.response.status",error.response.status);
         if (error.response.status === 404) {
           navigate("/searchError");
           return;
