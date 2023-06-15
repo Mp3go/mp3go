@@ -7,15 +7,25 @@ import Dropdown from "./dropit";
 import ToggleButton from "../toggle-button/togglebutton";
 import { BsHeart, BsCartFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { addWishlistItems } from "../../redux/userWishlit";
-import { addCartItems } from "../../redux/usercart";
+import { addWishlistItems, removeWishlistItems } from "../../redux/userWishlit";
+import { addCartItems, removeCartItems } from "../../redux/usercart";
+import { removeToken } from "../../redux/token";
 import ProfileIcon from "./ProfileIcon";
-
+import { useNavigate } from "react-router-dom";
 export default function Navbarnew() {
   const tokenValue = useSelector((state) => state.tokenData.token);
   const { data: value, error } = useAxios("/user/cart", "GET");
   const { data: value2, error: error2 } = useAxios("/user/wishlist", "GET");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function logoutUser() {
+    dispatch(removeToken());
+    dispatch(removeCartItems());
+    dispatch(removeWishlistItems());
+    navigate("/");
+  }
+
   useEffect(() => {
     if (error || error2) {
       return;
@@ -120,9 +130,38 @@ export default function Navbarnew() {
               <li className=" hover:text-gray py-1 mt-0">
                 <Dropdown />
               </li>
-            </ul>
+              <div className="space-y-2 inline-block md:hidden">
+                {tokenValue ? (
+                  <>
+                    <Link to="/Profile">
+                      <li className="font-semibold hover:text-gray py-1">
+                        Profile
+                      </li>
+                    </Link>
 
-            <div className="mt-3 space-y-2 inline-block md:hidden"></div>
+                    <div onClick={logoutUser}>
+                      <li className="font-semibold hover:text-gray py-1">
+                        Logout
+                      </li>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login">
+                      <li className="font-semibold hover:text-gray py-1">
+                        Log In
+                      </li>
+                    </Link>
+
+                    <Link to="/signup">
+                      <li className="font-semibold hover:text-gray py-1">
+                        Sign Up
+                      </li>
+                    </Link>
+                  </>
+                )}
+              </div>
+            </ul>
           </div>
         </div>
         <div className="hidden space-x-2 md:inline-block">

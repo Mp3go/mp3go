@@ -82,7 +82,7 @@ const SearchInput = (searchValue) => {
               ? FilterData.map((data) => {
                   return (
                     <Link to={`/music/${data._id}`} onClick={focusout}>
-                      <div className="h-14 mt-0 m-1 z-60 flex items-center bg-white rounded-md">
+                      <div className="h-14 mt-0 m-1 z-60 flex items-center bg-white text-black rounded-md">
                         <img
                           className="w-[3.5rem] h-[3.5rem] rounded-md p-1"
                           src={data.img}

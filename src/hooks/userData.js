@@ -10,7 +10,7 @@ export const useWishlist = () => {
 
   async function addToWishlist(id) {
     try {
-      let res = await axios.post("https://mp3go-558d.onrender.com/user/data", {
+      let res = await axios.post("https://mp3go-q9xm.onrender.com/user/data", {
         headers: {
           "x-access-token": token,
         },

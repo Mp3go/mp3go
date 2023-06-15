@@ -64,12 +64,12 @@ export default function Music() {
                   </div>
                 </button>
                 <button
-                  onClick={() => addtoCart(id)}
+                  onClick={() => addtoCart(id, "add")}
                   className="flex-1 flex justify-center items-center rounded-lg text-white md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full p-[0.8rem] md:p-[1rem] mb-2 md:m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
-                  <div onClick={() => addtoCart(id, "add")} className="px-2">
-                    Add to Cart
+                  <div className="px-2">Add to Cart</div>
+                  <div>
+                    <BsCartFill />
                   </div>
-                  <BsCartFill />
                 </button>
               </div>
             </div>

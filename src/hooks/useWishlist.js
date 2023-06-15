@@ -13,7 +13,7 @@ export const useWishlist = () => {
     try {
       if (action === "add") {
         let res = await axios.post(
-          "https://mp3go-558d.onrender.com/user/wishlist",
+          "https://mp3go-q9xm.onrender.com/user/wishlist",
           {
             albumId: id,
           },
@@ -28,7 +28,7 @@ export const useWishlist = () => {
         navigate("/wishlist");
       } else if (action === "rem") {
         const res = await axios.delete(
-          "https://mp3go-558d.onrender.com/user/wishlist",
+          "https://mp3go-q9xm.onrender.com/user/wishlist",
           {
             headers: {
               "x-access-token": token,
@@ -45,7 +45,7 @@ export const useWishlist = () => {
         navigate("/login");
         toast.warning(err.response.data.message);
       } else {
-        toast.warning(err.response.data.message);
+        toast.error(err.response.data.message);
       }
     }
   }

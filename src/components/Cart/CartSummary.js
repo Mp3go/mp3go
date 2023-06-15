@@ -20,7 +20,7 @@ export default function CartSummary({ data }) {
       order_id: datas.id,
       handler: async (response) => {
         try {
-          const verifyUrl = "https://mp3go-558d.onrender.com/payment/verify";
+          const verifyUrl = "https://mp3go-q9xm.onrender.com/payment/verify";
           const { data } = await axios.post(verifyUrl, response, {
             headers: {
               "x-access-token": token,
@@ -43,7 +43,7 @@ export default function CartSummary({ data }) {
       return;
     }
     try {
-      const checoutUrl = "https://mp3go-558d.onrender.com/payment/checkout";
+      const checoutUrl = "https://mp3go-q9xm.onrender.com/payment/checkout";
 
       var { data } = await axios.post(
         checoutUrl,
@@ -63,7 +63,7 @@ export default function CartSummary({ data }) {
     }
   };
   return (
-    <div className="md:w-1/4 xl:w-1/4 w-full bg-gray-900 bg-opacity-10 dark:bg-[#303134] h-full">
+    <div className="md:w-2/5 mx-2 xl:w-1/4 w-[95%] bg-gray-900 bg-opacity-10 dark:bg-[#303134] h-full">
       <div className="flex flex-col md:h-screen px-14 py-20 justify-between overflow-y-auto">
         <div>
           <p className="text-4xl font-black leading-9">Summary</p>

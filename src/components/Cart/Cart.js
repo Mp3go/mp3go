@@ -24,14 +24,14 @@ export default function Cart() {
 
   return (
     <div className="bg-[#DEE4E799] dark:bg-[#202124] min-h-[90vh]">
-      <div className="flex flex-col justify-start pl-5 py-10">
+      <div className="flex flex-col justify-start py-10">
         <h2 className="text-5xl font-black leading-10 pt-3 sm:ml-2 lg:ml-28">
           Mp3go Cart
         </h2>
 
         {/* Todo: Show div "Cart Empty" when cartItems is empty */}
 
-        <div className="flex md:flex-row flex-col justify-around items-start mt-10">
+        <div className="flex md:flex-row flex-col items-center justify-around md:items-start mt-10">
           {/* Cards */}
           <div className="lg:w-1/2 w-full md:pl-10 pl-4 pr-10 md:pr-4 md:py-12 py-8 ">
             {/* {cartItems.map((item) => (
@@ -45,7 +45,6 @@ export default function Cart() {
                 : null
               : null}
           </div>
-
           {/* Summary */}
           {data ? (
             // Object.keys(data).length != 0 ? (

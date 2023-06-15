@@ -10,11 +10,11 @@ export default function CartCard({ data }) {
   return (
     <div>
       <div className="md:flex items-center mt-2 py-8 border-t border-gray-400 dark:border-[#3c4043]">
-        <div className="w-1/5">
+        <div className="lg:w-2/5 xl:p-3 sm:w-2/5 w-3/5 items-center sm:items-center">
           <img
             src={data.product.img}
             alt="Product Image"
-            className="w-full rounded-sm pl-3 h-40 object-center object-cover"
+            className="w-full rounded-sm lg:pl-3 h-40 object-center object-cover"
           />
         </div>
         <div className="md:pl-3 md:w-3/4">

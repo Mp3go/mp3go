@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Profile({ data }) {
   return (
-    <div className="w-full bg-gray-900 bg-opacity-10 dark:bg-[#303134]">
+    <div className="w-full bg-gray-900 bg-opacity-10 dark:bg-[#303134] max-h-[100vh]">
       <div className="flex flex-col md:h-screen px-14 py-20 justify-between overflow-y-auto">
         <div>
           <p className="text-4xl font-black leading-9 text-center">Profile</p>

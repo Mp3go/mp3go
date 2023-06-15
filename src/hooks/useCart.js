@@ -13,7 +13,7 @@ export const useCart = () => {
     try {
       if (action === "add") {
         let res = await axios.post(
-          "https://mp3go-558d.onrender.com/user/cart",
+          "https://mp3go-q9xm.onrender.com/user/cart",
           {
             albumId: id,
           },
@@ -28,7 +28,7 @@ export const useCart = () => {
         navigate("/cart");
       } else if (action === "rem") {
         const res = await axios.delete(
-          "https://mp3go-558d.onrender.com/user/cart-delete-item",
+          "https://mp3go-q9xm.onrender.com/user/cart-delete-item",
           {
             headers: {
               "x-access-token": token,
@@ -43,7 +43,7 @@ export const useCart = () => {
         navigate("/cart");
       } else if (action === "iqty") {
         let res = await axios.post(
-          "https://mp3go-558d.onrender.com/user/cart/qty",
+          "https://mp3go-q9xm.onrender.com/user/cart/qty",
           {
             albumId: id,
             method: "increment",
@@ -59,7 +59,7 @@ export const useCart = () => {
         navigate("/cart");
       } else if (action === "dqty") {
         let res = await axios.post(
-          "https://mp3go-558d.onrender.com/user/cart/qty",
+          "https://mp3go-q9xm.onrender.com/user/cart/qty",
           {
             albumId: id,
             method: "decrement",
@@ -77,6 +77,7 @@ export const useCart = () => {
     } catch (err) {
       if (err.response.status === 401) {
         toast.warning(err.response.data.message);
+        navigate("/login");
       } else if (err.response.status === 409) {
         toast.error(err.response.data.message);
       }
