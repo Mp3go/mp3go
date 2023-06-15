@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import CartCard from "./CartCard";
 import CartSummary from "./CartSummary";
 import { useAxios } from "../../hooks/useAxios";
@@ -18,7 +18,7 @@ export default function Cart() {
     if (!error) {
       dispatch(addCartItems(value));
     }
-  }, [value, error]);
+  }, [value, error, dispatch]);
 
   const data = useSelector((State) => State.userCart.userCart);
 

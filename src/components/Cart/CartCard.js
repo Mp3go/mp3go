@@ -1,27 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useWishlist } from "../../hooks/useWishlist";
 import { useCart } from "../../hooks/useCart";
 
 //Todo: Counter function for a particular cartID and not all
 export default function CartCard({ data }) {
-  const [counter, setCounter] = useState(1);
-  const [subTotal, setSubTotal] = useState();
   const { addToWishlist } = useWishlist();
   const { addtoCart } = useCart();
-
-  const incCounter = () => {
-    if (counter < 10) {
-      setCounter(Number(counter) + 1);
-    }
-  };
-
-  const decCounter = () => {
-    if (counter > 1) {
-      setCounter(counter - 1);
-    } else if (counter === 1) {
-      // removeCartItem(data._id);
-    }
-  };
 
   return (
     <div>
@@ -29,7 +13,7 @@ export default function CartCard({ data }) {
         <div className="w-1/5">
           <img
             src={data.product.img}
-            alt
+            alt="Product Image"
             className="w-full rounded-sm pl-3 h-40 object-center object-cover"
           />
         </div>
@@ -39,11 +23,6 @@ export default function CartCard({ data }) {
             <p className="font-black leading-none text-5xl">
               {data.product._name}
             </p>
-            {/* <select className='py-2 px-1 border border-gray-200 mr-6 focus:outline-none'>
-                  <option>01</option>
-                  <option>02</option>
-                  <option>03</option>
-                </select> */}
             <div className="flex justify-center w-1/5">
               <svg
                 className="fill-current w-3"

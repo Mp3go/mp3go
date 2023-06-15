@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import { Ripple, initTE } from "tw-elements";
 import { BsHeartFill, BsCartFill } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
-import { addWishlistItems } from "../../redux/userWishlit";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useWishlist } from "../../hooks/useWishlist";
 import { useCart } from "../../hooks/useCart";
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function () {
+export default function Heading() {
   return (
     <>
       <div className="flex justify-center items-center leading-relaxed my-[30px]">

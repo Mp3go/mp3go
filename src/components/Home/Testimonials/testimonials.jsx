@@ -25,7 +25,7 @@ export default function Testimonials({ img, review, user }) {
               <img
                 className="w-6 h-6 rounded-full"
                 src={img}
-                alt="profile picture"
+                alt="User_Image"
               />
               <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
                 <div className="pr-3 font-medium text-gray-900 dark:text-white">

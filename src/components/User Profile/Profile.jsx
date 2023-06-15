@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Profile({ data }) {
   return (
@@ -8,7 +8,7 @@ export default function Profile({ data }) {
           <p className="text-4xl font-black leading-9 text-center">Profile</p>
           <img
             src={data.img}
-            alt="User Image"
+            alt="User_Image"
             className="rounded-full w-32 h-32 m-auto mt-10"
           />
           <div className="flex items-center pt-10">

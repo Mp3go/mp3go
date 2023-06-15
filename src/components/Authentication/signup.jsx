@@ -51,7 +51,6 @@ export default function SignUp() {
           "Content-Type": "application/json",
         },
       });
-      const data = res.data;
       toast.success("You Have Successfully Registered");
       navigate("/login");
     } catch (err) {
