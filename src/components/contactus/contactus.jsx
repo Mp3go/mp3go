@@ -2,7 +2,7 @@ import React from "react";
 import Example from "./form";
 import GoogleMap from "./googlemap";
 
-function Contactus() {
+export default function Contactus() {
   return (
     <footer className="bg-gray-900 dark:bg-black text-white py-10">
       <div className="container mx-auto flex flex-wrap justify-between">
@@ -12,16 +12,14 @@ function Contactus() {
             <li>
               <a
                 href="tel:1234567890"
-                className="text-gray-400 hover:text-white"
-              >
+                className="text-gray-400 hover:text-white">
                 Phone: (123) 456-7890
               </a>
             </li>
             <li>
               <a
                 href="mailto:info@example.com"
-                className="text-gray-400 hover:text-white"
-              >
+                className="text-gray-400 hover:text-white">
                 Email: info@example.com
               </a>
             </li>
@@ -60,5 +58,3 @@ function Contactus() {
     </footer>
   );
 }
-
-export default Contactus;
