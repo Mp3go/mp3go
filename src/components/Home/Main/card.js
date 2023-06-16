@@ -28,7 +28,7 @@ export default function Card({ id, image, title, price }) {
           </Link>
 
           <div className="relative px-4 -mt-10">
-            <div className="bg-white p-6 rounded-2xl shadow-lg dark:bg-black dark:text-white">
+            <div className="bg-[#EAEFF2] p-6 rounded-2xl shadow-lg dark:bg-black dark:text-white">
               <h4 className="mt-1 text-xl font-medium uppercase leading-tight truncate">
                 {title}
               </h4>

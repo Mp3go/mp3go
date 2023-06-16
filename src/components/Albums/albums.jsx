@@ -164,7 +164,7 @@ export default function Allalbums() {
         <p className="text-xl sm:text-3xl md:text-5xl   lg:text-6xl text-center font-black leading-9 m-5">
           Album Collections
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2 pt-5 h-full container">
+        <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 p-2 pt-5 h-full container">
           {dataa
             ? dataa.map((card) => (
                 <Card

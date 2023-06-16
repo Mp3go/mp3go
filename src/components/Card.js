@@ -16,7 +16,7 @@ export default function Card({ image, title, price, id, artist }) {
   return (
     <div className="rounded-lg overflow-hidden shadow-lg h-80 md:h-96 max-w-sm transition ease-in-out delay-150 hover:scale-105 duration-300 dark:bg-black bg-white">
       <Link to={`/music/${id}`}>
-        <img className="w-full h-44 sm:h-48 p-3" src={image} alt="card" />{" "}
+        <img className="w-full h-44 p-3" src={image} alt="card" />{" "}
       </Link>
       <div className="px-6 lg:py-4 h-32 mt-2">
         <div className="truncate font-bold">{title}</div>

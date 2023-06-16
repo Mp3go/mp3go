@@ -23,18 +23,25 @@ export default function Card({ image, title, price, id, artist }) {
   };
 
   return (
-    <div className="rounded-lg overflow-hidden shadow-lg h-96 md:h-[475px] w-[95%] transition ease-in-out delay-150 hover:scale-105 duration-300 dark:bg-black bg-white flex flex-col">
+    <div className="rounded-lg overflow-hidden shadow-lg md:h-[500px] w-[90%] transition ease-in-out delay-150 hover:scale-105 duration-300 dark:bg-black bg-white flex flex-col">
       <Link to={`/music/${id}`}>
-        <img className="w-full h-44 sm:h-48 p-3" src={image} alt="card" />{" "}
+        <img
+          className="w-[100%] h-44  md:h-56 p-3 object-center m-0"
+          src={image}
+          alt="card"
+        />{" "}
       </Link>
       <div className="px-6 lg:py-4 mt-2 flex flex-col grow">
-        <div className="font-bold">{title}</div>
-        <p className="text-sm text-gray-400 mb-2">
-          {artist.map((ele) => {
-            return `${ele} `;
-          })}
-        </p>
-        <div className="font-bold text-xl mb-2">Rs {price}</div>
+        <div className="flex-1 flex flex-col justify-center">
+          <div className="font-bold">{title}</div>
+          <p className="text-sm text-gray-400 mb-2">
+            {artist.map((ele) => {
+              return `${ele} `;
+            })}
+          </p>
+          <div className="font-bold text-xl mb-2">Rs {price}</div>
+        </div>
+
         <div className="flex-1 flex flex-col grow justify-end mb-4">
           {!isWishlistPage && (
             <button
