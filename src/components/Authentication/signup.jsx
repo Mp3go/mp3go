@@ -18,7 +18,7 @@ export default function SignUp() {
     e.preventDefault();
     const imageData = new FormData();
     imageData.append("file", uploadImage);
-    imageData.append("upload_preset", "mp3goproject");
+    imageData.append("upload_preset", process.env.REACT_APP_PRESET);
     var imageURL = "";
     try {
       await Axios.post(
