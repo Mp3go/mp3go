@@ -23,7 +23,7 @@ export default function Card({ image, title, price, id, artist }) {
   };
 
   return (
-    <div className="rounded-lg overflow-hidden shadow-lg md:h-[500px] w-[90%] transition ease-in-out delay-150 hover:scale-105 duration-300 dark:bg-black bg-white flex flex-col">
+    <div className="rounded-lg overflow-hidden shadow-lg md:h-[450px] w-[90%] transition ease-in-out delay-150 hover:scale-105 duration-300 dark:bg-black bg-white flex flex-col">
       <Link to={`/music/${id}`}>
         <img
           className="w-[100%] h-44  md:h-56 p-3 object-center m-0"
@@ -33,8 +33,8 @@ export default function Card({ image, title, price, id, artist }) {
       </Link>
       <div className="px-6 lg:py-4 mt-2 flex flex-col grow">
         <div className="flex-1 flex flex-col justify-center">
-          <div className="font-bold">{title}</div>
-          <p className="text-sm text-gray-400 mb-2">
+          <div className="truncate font-bold">{title}</div>
+          <p className="truncate text-sm text-gray-400 mb-2">
             {artist.map((ele) => {
               return `${ele} `;
             })}
