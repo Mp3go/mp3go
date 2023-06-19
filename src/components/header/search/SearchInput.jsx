@@ -53,16 +53,16 @@ const SearchInput = (searchValue) => {
   }
 
   return (
-    <div className="flex flex-col z-60">
-      <div className="relative cursor-text flex w-full">
-        <span className="absolute inset-y-0 flex items-center left-2 ">
+    <div className="md:flex md:flex-center flex-col z-60">
+      <div className="relative cursor-text flex w-full ">
+        <span className="absolute inset-y-0 flex items-center left-2 pr-0 md:pr-2 lg:pr-0">
           <FontAwesomeIcon className="text-slate-400 h-5" icon={faSearch} />
         </span>
         <input
           onChange={(e) => {
             DataChange(e);
           }}
-          className="py-3 px-10 
+          className="py-3 lg:px-10 px-10 md:px-7 
         rounded-sm 
         bg-slate-200
         focus:outline-none

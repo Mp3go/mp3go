@@ -41,17 +41,34 @@ export default function Navbarnew() {
   return (
     <nav className="w-full bg-white dark:bg-black text-black dark:text-white shadow">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-4">
-        <div>
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <div className="h-full w-full flex items-center">
-              <Link to="/" className="flex items-center p-1 h-8 w-10">
-                <img
-                  src="https://res.cloudinary.com/dhjriczfe/image/upload/v1686769665/flc_design20230614159558_2_gbep6x.png"
-                  className="h-12 w-14"
-                  alt="Flowbite Logo"
-                />
-                <div className="text-xl font-bold pl-1">Mp3Go</div>
-              </Link>
+        <div className="flex-1 flex">
+          <div className="flex-1 flex items-center justify-between py-3 md:py-5 md:block">
+            <div className="h-full flex items-center">
+              <div className="flex-1 flex items-center flex-start p-1 h-8 ">
+                <Link to="/" className="flex items-center">
+                  <img
+                    src="https://res.cloudinary.com/dhjriczfe/image/upload/v1686769665/flc_design20230614159558_2_gbep6x.png"
+                    className="h-12 w-8 md:w-5 lg:w-8"
+                    alt="Flowbite Logo"
+                  />
+                  <div className="text-xl md:text-lg lg:text-xl font-bold pl-1">
+                    Mp3Go
+                  </div>
+                </Link>
+                <ul className="items-center justify-center hidden md:flex md:space-x-6 md:space-y-0 ml-5">
+                  <Link to="/">
+                    <li className="font-semibold hover:text-gray py-1">Home</li>
+                  </Link>
+                  <Link to="/albums">
+                    <li className="font-semibold hover:text-gray py-1">
+                      Album
+                    </li>
+                  </Link>
+                  <li className=" hover:text-gray py-1 mt-0">
+                    <Dropdown />
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <div className="md:hidden flex items-center">
@@ -112,24 +129,24 @@ export default function Navbarnew() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="flex-1 flex flex-start">
           <div
             className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
               navbar ? "block" : "hidden"
             }`}>
-            <ul className="items-center justify-center md:flex md:space-x-6 md:space-y-0">
+            <ul className="items-center flex-start lg:flex">
               <li className="hover:text-gray py-1">
                 <SearchInput />
               </li>
-              <Link to="/">
+              {/* <Link to="/">
                 <li className="font-semibold hover:text-gray py-1">Home</li>
               </Link>
               <Link to="/albums">
                 <li className="font-semibold hover:text-gray py-1">Album</li>
-              </Link>
-              <li className=" hover:text-gray py-1 mt-0">
+              </Link> */}
+              {/* <li className=" hover:text-gray py-1 mt-0">
                 <Dropdown />
-              </li>
+              </li> */}
               <div className="space-y-2 inline-block md:hidden">
                 {tokenValue ? (
                   <>

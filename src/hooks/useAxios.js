@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { removeToken } from "../redux/token";
 
 export const useAxios = (url, method, config = {}) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const token = useSelector((state) => state.tokenData.token);
+  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const headers = {
@@ -36,12 +39,14 @@ export const useAxios = (url, method, config = {}) => {
           error.response.status === 401 &&
           (location.pathname == "/cart" ||
             location.pathname == "/wishlist" ||
-            location.pathname == "/profile")
+            location.pathname == "/Profile")
         ) {
           toast.error("Please Login First");
+          dispatch(removeToken());
           navigate("/login");
         }
         setError(error);
+        console.log("Error Occured");
       }
     };
 
