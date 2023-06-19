@@ -9,7 +9,7 @@ export default function Example() {
   const [agreed, setAgreed] = useState(false);
 
   return (
-    <div className="isolate bg-white px-1 py-2 sm:py-4 lg:px-8">
+    <div className="isolate bg-white mx-2 px-1 py-2 sm:py-4 lg:px-8">
       <form
         action="#"
         method="POST"

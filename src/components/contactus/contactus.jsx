@@ -6,7 +6,7 @@ export default function Contactus() {
   return (
     <footer className="bg-gray-900 dark:bg-black text-white py-10">
       <div className="container mx-auto flex flex-wrap justify-between">
-        <div className="w-full sm:w-1/2 lg:w-1/4 mb-6 sm:mb-0">
+        <div className="w-full sm:w-1/2 lg:w-1/4 mb-6 sm:mb-0 ">
           <h1 className="head text-3xl text font-bold mb-9">Contact Us</h1>
           <ul>
             <li>
