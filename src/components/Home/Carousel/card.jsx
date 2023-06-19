@@ -30,7 +30,7 @@ function Card({ imagen, music }) {
         <Link to={`/language/` + music}>
           <div className="flex justify-center align-center">
             <button className=" text-white md:text-[1rem] font-serif tracking-wide lg:text-[1rem] border-0 outline-0 w-full py-[1rem] px-0 m-0 transition ease-in-out delay-150 hover:scale-y-110 font-semibold scale-[101%] duration-300 bg-gradient-to-b from-slate-900 to-black">
-              {music} Tunes
+              {music} Music
             </button>
           </div>
         </Link>
