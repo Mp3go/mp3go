@@ -13,6 +13,17 @@ export default function Music() {
   const { addToWishlist } = useWishlist();
   const { addtoCart } = useCart();
   const [firstSongUrl, setFirstSongUrl] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const playPauseHandler = () => {
+    const audio = document.getElementById("musicPlayer");
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   useEffect(() => {
     // Fetch the first song's URL
@@ -24,7 +35,8 @@ export default function Music() {
 
         if (jsonData?.data?.results?.length > 0) {
           const firstSong = jsonData.data.results[0];
-          setFirstSongUrl(firstSong.url);
+          const linkSong = firstSong.downloadUrl[0];
+          setFirstSongUrl(linkSong.link);
         }
       } catch (error) {
         console.error("Error fetching first song URL:", error);
@@ -40,13 +52,11 @@ export default function Music() {
       <div className="pt-5 h-full flex flex-col md:flex-col w-full px-5 md:px-[50px]">
         <div className="flex flex-col md:flex-row h-full m-0">
           <div className="md:w-1/3 flex justify-center items-center p-2">
-            <a href={firstSongUrl} target="_self">
-              <img
-                className="w-[90%] h-[90%] sm:w-[70%] sm:max-w-[400px] sm:max-h-[400px] sm:h-[70%] md:w-[80%] md:h-[80%] align mx-5 shadow-xl rounded-md"
-                src={data ? data.img : null}
-                alt="Music"
-              />
-            </a>
+            <img
+              className="w-[90%] h-[90%] sm:w-[70%] sm:max-w-[400px] sm:max-h-[400px] sm:h-[70%] md:w-[80%] md:h-[80%] align mx-5 shadow-xl rounded-md"
+              src={data ? data.img : null}
+              alt="Music"
+            />
           </div>
           <div className="w-full md:w-2/3 h-[90%] p-1 md:p-4 flex flex-1 flex-col">
             <div className="text-3xl sm:text-6xl text-center font-black m-5 leading-none">
@@ -79,25 +89,40 @@ export default function Music() {
               <span> minutes</span>
             </div>
             <div className="flex-1 flex flex-col justify-end">
-              <div className="flex flex-col md:flex-row mt-3 md:mt-5 justify-between justify-self-end">
-                <button
-                  onClick={() => addToWishlist(id, "add")}
-                  className="flex-1 flex justify-center items-center rounded-lg text-white md:text-[1rem] lg:text-[1rem]  text-[.8rem] border-0 outline-0 w-full p-[.8rem] md:p-[1rem] mb-2 md:m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
-                  <div className="px-2">Wishlist</div>
-                  <div>
-                    <BsHeartFill />
-                  </div>
-                </button>
-                <button
-                  onClick={() => addtoCart(id, "add")}
-                  className="flex-1 flex justify-center items-center rounded-lg text-white md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 w-full p-[0.8rem] md:p-[1rem] mb-2 md:m-1 transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black">
-                  <div className="px-2">Add to Cart</div>
-                  <div>
-                    <BsCartFill />
-                  </div>
-                </button>
-              </div>
-            </div>
+  <div className="grid grid-cols-3 gap-2 mt-4">
+    <audio
+      id="musicPlayer"
+      controls
+      src={firstSongUrl}
+      style={{ display: "none" }}
+    ></audio>
+    <button
+      onClick={playPauseHandler}
+      className="bg-black text-white rounded-md p-2 hover:scale-105 transform transition"
+    >
+      {isPlaying ? "Pause" : "Play"}
+    </button>
+    <button
+      onClick={() => addToWishlist(id, "add")}
+      className="flex justify-center items-center rounded-lg text-white md:text-[1rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 p-[.8rem] md:p-[1rem] transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black"
+    >
+      <div className="px-2">Wishlist</div>
+      <div>
+        <BsHeartFill />
+      </div>
+    </button>
+    <button
+      onClick={() => addtoCart(id, "add")}
+      className="flex justify-center items-center rounded-lg text-white md:text-[0.9rem] lg:text-[1rem] text-[.8rem] border-0 outline-0 p-[0.8rem] md:p-[1rem] transition ease-in-out delay-150 hover:scale-y-110 duration-300 bg-black"
+    >
+      <div className="px-2">Add to Cart</div>
+      <div>
+        <BsCartFill />
+      </div>
+    </button>
+  </div>
+</div>
+
           </div>
         </div>
         <div className="mt-10 sm:mt-2 sm:px-5">
@@ -106,7 +131,6 @@ export default function Music() {
             " {data ? data.lyric : null} "
           </div>
         </div>
-
         <div className="flex flex-col">
           <div className="p-5 w-[100%] h-full ">
             <FeaturedAlbums />
