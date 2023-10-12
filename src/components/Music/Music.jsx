@@ -1,27 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BsHeartFill, BsCartFill } from "react-icons/bs";
 import { useAxios } from "../../hooks/useAxios";
 import FeaturedAlbums from "../Home/Main/FeaturedAlbums";
 import { useWishlist } from "../../hooks/useWishlist";
 import { useCart } from "../../hooks/useCart";
+import { Link } from "react-router-dom";
 
 export default function Music() {
   const { id } = useParams();
   const { data, error } = useAxios(`/albums/${id}`, "GET");
   const { addToWishlist } = useWishlist();
   const { addtoCart } = useCart();
+  const [firstSongUrl, setFirstSongUrl] = useState(null);
+
+  useEffect(() => {
+    // Fetch the first song's URL
+    const fetchFirstSongUrl = async () => {
+      try {
+        const apiUrl = `https://jiosaavn-api-privatecvc2.vercel.app/search/songs?query=${data ? data.name : ""}&page=0&limit=1`;
+        const response = await fetch(apiUrl);
+        const jsonData = await response.json();
+
+        if (jsonData?.data?.results?.length > 0) {
+          const firstSong = jsonData.data.results[0];
+          setFirstSongUrl(firstSong.url);
+        }
+      } catch (error) {
+        console.error("Error fetching first song URL:", error);
+      }
+    };
+
+    fetchFirstSongUrl();
+  }, [data]);
 
   return (
     <>
       {error ? <div>{error.response.data}</div> : null}
-      <div className="pt-5 h-full flex flex-col md:flex-col  w-full px-5 md:px-[50px]">
+      <div className="pt-5 h-full flex flex-col md:flex-col w-full px-5 md:px-[50px]">
         <div className="flex flex-col md:flex-row h-full m-0">
           <div className="md:w-1/3 flex justify-center items-center p-2">
-            <img
-              className="w-[90%] h-[90%] sm:w-[70%] sm:max-w-[400px] sm:max-h-[400px] sm:h-[70%] md:w-[80%] md:h-[80%] align mx-5 shadow-xl rounded-md"
-              src={data ? data.img : null}
-              alt="Music"></img>
+            <a href={firstSongUrl} target="_self">
+              <img
+                className="w-[90%] h-[90%] sm:w-[70%] sm:max-w-[400px] sm:max-h-[400px] sm:h-[70%] md:w-[80%] md:h-[80%] align mx-5 shadow-xl rounded-md"
+                src={data ? data.img : null}
+                alt="Music"
+              />
+            </a>
           </div>
           <div className="w-full md:w-2/3 h-[90%] p-1 md:p-4 flex flex-1 flex-col">
             <div className="text-3xl sm:text-6xl text-center font-black m-5 leading-none">
