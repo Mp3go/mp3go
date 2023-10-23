@@ -1,8 +1,10 @@
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addWishlistItems } from "../redux/userWishlit";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
+
+// const axios = require("axios");
 
 export const useWishlist = () => {
   const navigate = useNavigate();

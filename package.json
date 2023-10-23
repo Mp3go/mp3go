@@ -1,5 +1,10 @@
 {
   "name": "mp3go",
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -57,6 +62,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "babel-jest": "^29.7.0",
+    "jest": "^27.5.1",
     "tailwindcss": "^3.3.2"
   }
 }
