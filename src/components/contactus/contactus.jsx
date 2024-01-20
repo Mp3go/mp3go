@@ -2,7 +2,7 @@ import React from "react";
 import Example from "./form";
 import GoogleMap from "./googlemap";
 
-export default function Contactus() {
+export default function Contactus({ phone, email }) {
   return (
     <footer className="bg-gray-900 dark:bg-black text-white py-10">
       <div className="container mx-auto flex flex-wrap justify-between">
@@ -11,16 +11,16 @@ export default function Contactus() {
           <ul>
             <li>
               <a
-                href="tel:1234567890"
+                href={`tel:${phone}`}
                 className="text-gray-400 hover:text-white">
-                Phone: (123) 456-7890
+                Phone: {phone}
               </a>
             </li>
             <li>
               <a
-                href="mailto:info@example.com"
+                href={`mailto:${email}`}
                 className="text-gray-400 hover:text-white">
-                Email: info@example.com
+                Email: {email}
               </a>
             </li>
           </ul>

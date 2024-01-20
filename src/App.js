@@ -30,7 +30,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
             <Route path="/albums" element={<Allalbums />}></Route>
-            <Route path="/contact" element={<Contactus />}></Route>
+            <Route path="/contact" element={<Contactus phone="(123) 456-7890" email="info@example.com" />} />
             <Route path="/language/:language" element={<Language />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/music/:id" element={<Music />}></Route>

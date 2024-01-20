@@ -4,7 +4,7 @@ import { useAxios } from "../../hooks/useAxios";
 import { useState, useEffect } from "react";
 import SearchInput from "./search/SearchInput";
 import Dropdown from "./dropit";
-import ToggleButton from "../toggle-button/togglebutton";
+import ThemeContext from "../toggle-button/ThemeContext.js";
 import { BsHeart, BsCartFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { addWishlistItems, removeWishlistItems } from "../../redux/userWishlit";
@@ -94,7 +94,7 @@ export default function Navbarnew() {
                 </div>
               </Link>
               {/* <ProfileIcon image={tokenValue ? "" : ""} /> */}
-              <ToggleButton />
+              <ThemeContext />
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
                 onClick={() => setNavbar(!navbar)}>
@@ -206,7 +206,7 @@ export default function Navbarnew() {
             </Link>
             <ProfileIcon image={tokenValue ? "" : ""} />
             <div className="pl-3">
-              <ToggleButton />
+              <ThemeContext />
             </div>
           </div>
         </div>
